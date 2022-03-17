@@ -26,49 +26,56 @@ def render_word_meaning(w: DpdWord) -> RenderResult:
     text_concise = ""
 
     if w.russian == "":
-        html_string += f"""<div class="content_dps"><p>{w.pos}. <b>{w.meaning}</b> [в процессе]</p></div>"""
-        text_full += f"""{w.pali}. {w.pos}. {w.meaning}. [в процессе]"""
+        html_string += f"""<div class="content_dps"><p>{w.pos}. <b>{w.meaning}</b> [in progress]</p></div>"""
+        text_full += f"""{w.pali}. {w.pos}. {w.meaning}. [in progress]"""
         text_concise += f"""{w.pali}. {w.pos}. {w.meaning}."""
 
 
     else:
-        html_string += f"""<div class="content_dps"><p>{w.pos}"""
-        text_concise += f"{w.pali}. {w.pos}."
+        html_string += f"""<div class="content_dps"><p>"""
+        text_concise += f"{w.pali}."
 
         if w.fin == "n":
-            html_string += f""" [{w.fin}]"""
-            text_concise += f""" [{w.fin}]"""
+            html_string += f""" [n] """
+            text_concise += f""" [n] """
 
         if w.fin == "nn":
-            html_string += f""" [{w.fin}]"""
-            text_concise += f""" [{w.fin}]"""
+            html_string += f""" [nn] """
+            text_concise += f""" [nn] """
 
         if w.fin == "np":
-            html_string += f""" [{w.fin}]"""
-            text_concise += f""" [{w.fin}]"""
-
-        if w.fin == "ns":
-            html_string += f""" [{w.fin}]"""
-            text_concise += f""" [{w.fin}]"""
+            html_string += f""" [np] """
+            text_concise += f""" [np] """
 
         if w.fin == "pn":
-            html_string += f""" [{w.fin}]"""
-            text_concise += f""" [{w.fin}]"""
+            html_string += f""" [pn] """
+            text_concise += f""" [pn] """
 
-        if w.fin == "s":
-            html_string += f""" [{w.fin}]"""
-            text_concise += f""" [{w.fin}]"""
+        if w.fin == "ns":
+            html_string += f""" [sbs]  """
+            text_concise += f""" [sbs]  """
+
+        if w.chapter != "" and w.pos != "prefix" and w.fin !="ns" and w.metadata == "":
+            html_string += f""" (sbs)  """
+            text_concise += f""" (sbs)  """
+
+        # if w.fin == "ps":
+        #     html_string += f""" (sbs)  """
+        #     text_concise += f""" (sbs)  """
 
         # if w.case != "":
         #     html_string += f""" ({w.case})"""
         #     text_concise += f""" ({w.case})"""
 
-        html_string += f""". (en) <b>{w.meaning}</b>"""
+        html_string += f"""{w.pos}"""
+        text_concise += f"{w.pos}."
+
+        html_string += f""". <b>{w.meaning}</b>"""
         text_concise += f""". {w.meaning}"""
 
-        if w.russian != "":
-            html_string += f"""; (рус) <b>{w.russian}</b>"""
-            text_concise += f"""; {w.russian}"""
+        # if w.russian != "":
+        #     html_string += f"""; (рус) <b>{w.russian}</b>"""
+        #     text_concise += f"""; {w.russian}"""
 
         # if w.base == "":
         #     construction_simple = re.sub(r" \[.+\] \+", "", w.construction)
