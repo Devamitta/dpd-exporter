@@ -35,29 +35,29 @@ def render_word_meaning(w: DpdWord) -> RenderResult:
         html_string += f"""<div class="content_dps"><p>"""
         text_concise += f"{w.pali}."
 
-        if w.fin == "n":
-            html_string += f""" [n] """
-            text_concise += f""" [n] """
+        # if w.fin == "n":
+        #     html_string += f""" [n] """
+        #     text_concise += f""" [n] """
 
-        if w.fin == "nn":
-            html_string += f""" [nn] """
-            text_concise += f""" [nn] """
+        # if w.fin == "nn":
+        #     html_string += f""" [nn] """
+        #     text_concise += f""" [nn] """
 
-        if w.fin == "np":
-            html_string += f""" [np] """
-            text_concise += f""" [np] """
+        # if w.fin == "np":
+        #     html_string += f""" [np] """
+        #     text_concise += f""" [np] """
 
-        if w.fin == "pn":
-            html_string += f""" [pn] """
-            text_concise += f""" [pn] """
+        # if w.fin == "pn":
+        #     html_string += f""" [pn] """
+        #     text_concise += f""" [pn] """
 
-        if w.fin == "ns":
-            html_string += f""" [sbs]  """
-            text_concise += f""" [sbs]  """
+        # if w.fin == "ns":
+        #     html_string += f""" [sbs]  """
+        #     text_concise += f""" [sbs]  """
 
-        if w.chapter != "" and w.pos != "prefix" and w.fin !="ns" and w.metadata == "":
-            html_string += f""" (sbs)  """
-            text_concise += f""" (sbs)  """
+        # if w.chapter != "" and w.pos != "prefix" and w.fin !="ns" and w.metadata == "":
+        #     html_string += f""" (sbs)  """
+        #     text_concise += f""" (sbs)  """
 
         # if w.fin == "ps":
         #     html_string += f""" (sbs)  """
