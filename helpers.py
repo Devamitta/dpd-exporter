@@ -72,7 +72,7 @@ def get_resource_paths() -> ResourcePaths:
         # output_root_html_dir = Path("./output/root html/"),
         output_share_dir = Path("./share/"),
         gd_json_path = Path("./output/gd.json"),
-        output_stardict_zip_path = Path("dps.zip"),
+        output_stardict_zip_path = Path("sbs-ped.zip"),
         error_log_dir = Path("./errorlogs/"),
         # Project assets
         dps_words_css_path = Path("./assets/dps-words.css"),
@@ -82,7 +82,7 @@ def get_resource_paths() -> ResourcePaths:
         # compound_families_dir = dpd_dir.joinpath("compound families generator/"),
         # root_families_dir = dpd_dir.joinpath("root families generator/"),
         inflections_dir = dpd_dir.joinpath("inflection/"),
-        words_path = dpd_dir.joinpath("spreadsheets/dps-full.csv"),
+        words_path = dpd_dir.joinpath("spreadsheets/sbs-ped.csv"),
         # roots_path = dpd_dir.joinpath("csvs/roots.csv"),
         icon_path = Path("./icon.png"),
     )
