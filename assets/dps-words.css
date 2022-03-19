@@ -23,7 +23,7 @@ p.heading {
 }
 
 p.sutta_dps {
-    color: #358109;
+    color: #ad740a;
     font-style: italic;
 }
 
@@ -44,7 +44,7 @@ table.table1_dps td, table.table1_dps th {
 }
 
 table.table1_dps th {
-    color: #358109;
+    color: #ad740a;
     font-weight: 700;
     white-space: nowrap;
 }
@@ -81,7 +81,7 @@ input {
 }
 
 div.content_dps {
-    border: 2px solid #358109;
+    border: 2px solid #ad740a;
     border-radius: 5px;
     line-height: 150%;
     overflow: auto;
@@ -90,9 +90,9 @@ div.content_dps {
 
 a.button_dps {
     text-decoration: none;
-    background-color: #9ff16f;
+    background-color: #ad740a;
     border-radius: 3px;
-    box-shadow: 0 4px 4px -2px #358109;
+    box-shadow: 0 4px 4px -2px #5e3f06;
     color: #000;
     cursor: pointer;
     display: inline-block;
@@ -110,7 +110,7 @@ a.button_dps.close {
 }
 
 a.button_dps:hover {
-    background-color: #358109;
+    background-color: #ad740a;
     color: white;
     user-select: none;
 }
@@ -126,7 +126,7 @@ a.button_dps:hover {
 }
 
 a.button_dps.active {
-    background-color: #358109;
+    background-color: #ad740a;
     color: white;
     user-select: none;
 }
