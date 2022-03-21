@@ -30,11 +30,11 @@ def render_word_meaning(w: DpdWord) -> RenderResult:
     text_concise += f"{w.pali}."
 
     if w.pos != "":
-        html_string += f"""{w.pos}"""
+        html_string += f"""{w.pos}."""
         text_concise += f"{w.pos}."
 
-    html_string += f""". <b>{w.meaning}</b>"""
-    text_concise += f""". {w.meaning}"""
+    html_string += f""" <b>{w.meaning}</b>"""
+    text_concise += f""" {w.meaning}"""
 
     html_string += f"""</p></div>"""
 
