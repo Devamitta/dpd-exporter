@@ -122,10 +122,10 @@ def generate_html_and_json(generate_roots: bool = True):
         # grammar
 
         html_string += f"""<div id="grammar_sbs_{w.pali_}" class="content_sbs hidden"><a class="button_sbs close" href="javascript:void(0);" onclick="button_click(this)" data-target="grammar_sbs_{w.pali_}">close</a>"""
-
-        html_string += f"""<table class = "table1_sbs"><tr><th>pāli</th><td>{w.pali}</td></tr>"""
-        html_string += f"""<tr><th>Grammar</th><td>{w.pos}"""
-        text_full += f"{w.pali}. {w.pos}"
+        html_string += f"""<table class = "table1_sbs">"""
+        if w.pos != "":
+            html_string += f"""<tr><th>Grammar</th><td>{w.pos}"""
+            text_full += f"{w.pali}. {w.pos}"
 
         if w.grammar != "":
             html_string += f""", {w.grammar}"""
