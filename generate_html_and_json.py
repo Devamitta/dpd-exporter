@@ -39,7 +39,7 @@ def generate_html_and_json(generate_roots: bool = True):
     df = data['words_df']
     df_length = data['words_df'].shape[0]
 
-    with open(rsc['dps_words_css_path'], 'r') as f:
+    with open(rsc['sbs_words_css_path'], 'r') as f:
         words_css = f.read()
 
     with open(rsc['buttons_js_path'], 'r') as f:
@@ -446,7 +446,7 @@ def generate_roots_html_and_json(data: DataFrames, rsc: ResourcePaths, html_data
     # root_data_list = []
     # root_html_error_string = ""
 
-    # with open(rsc['dps_words_css_path'], 'r') as f:
+    # with open(rsc['sbs_words_css_path'], 'r') as f:
     #     words_css = f.read()
 
     # with open(rsc['dpd_roots_css_path'], 'r') as f:

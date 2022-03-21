@@ -30,7 +30,7 @@ class ResourcePaths(TypedDict):
     inflections_dir: Path
     words_path: Path
     # roots_path: Path
-    dps_words_css_path: Path
+    sbs_words_css_path: Path
     # dpd_roots_css_path: Path
     buttons_js_path: Path
     gd_json_path: Path
@@ -75,7 +75,7 @@ def get_resource_paths() -> ResourcePaths:
         output_stardict_zip_path = Path("sbs-ped.zip"),
         error_log_dir = Path("./errorlogs/"),
         # Project assets
-        dps_words_css_path = Path("./assets/dps-words.css"),
+        sbs_words_css_path = Path("./assets/sbs-words.css"),
         # dpd_roots_css_path = Path("./assets/dpd-roots.css"),
         buttons_js_path = Path("./assets/buttons.js"),
         # Project input
