@@ -155,9 +155,10 @@ def generate_html_and_json(generate_roots: bool = True):
         html_string += f"""<tr valign="top"><th>English</th><td><b>{w.meaning}</b>"""
         text_full += f""". {w.meaning}"""
 
-        html_string += f"""</td></tr>"""
-        html_string += f"""<tr valign="top"><th>Русский</th><td><b>{w.russian}</b>"""
-        text_full += f""". {w.russian}"""
+        if w.russian != "":
+            html_string += f"""</td></tr>"""
+            html_string += f"""<tr valign="top"><th>Russian</th><td><b>{w.russian}</b>"""
+            text_full += f""". {w.russian}"""
 
         # if w.lit != "":
         #     html_string += f"""; lit. {w.lit}"""
