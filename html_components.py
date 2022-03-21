@@ -26,13 +26,13 @@ def render_word_meaning(w: DpdWord) -> RenderResult:
     text_concise = ""
 
     if w.russian == "":
-        html_string += f"""<div class="content_dps"><p>{w.pos}. <b>{w.meaning}</b> [in progress]</p></div>"""
+        html_string += f"""<div class="content_sbs"><p>{w.pos}. <b>{w.meaning}</b> [in progress]</p></div>"""
         text_full += f"""{w.pali}. {w.pos}. {w.meaning}. [in progress]"""
         text_concise += f"""{w.pali}. {w.pos}. {w.meaning}."""
 
 
     else:
-        html_string += f"""<div class="content_dps"><p>"""
+        html_string += f"""<div class="content_sbs"><p>"""
         text_concise += f"{w.pali}."
 
         # if w.fin == "n":

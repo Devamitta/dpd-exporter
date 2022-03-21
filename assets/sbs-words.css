@@ -22,17 +22,17 @@ p.heading {
     user-select: none;
 }
 
-p.sutta_dps {
+p.sutta_sbs {
     color: #ad740a;
     font-style: italic;
 }
 
-table.table1_dps {
+table.table1_sbs {
     border: 1px solid transparent;
     border-collapse: collapse;
 }
 
-table.table1_dps td, table.table1_dps th {
+table.table1_sbs td, table.table1_sbs th {
     border: 1px solid transparent;
     border-collapse: collapse;
     line-height: 150%;
@@ -43,7 +43,7 @@ table.table1_dps td, table.table1_dps th {
     vertical-align: top;
 }
 
-table.table1_dps th {
+table.table1_sbs th {
     color: #ad740a;
     font-weight: 700;
     white-space: nowrap;
@@ -80,7 +80,7 @@ input {
     display: none;
 }
 
-div.content_dps {
+div.content_sbs {
     border: 2px solid #ad740a;
     border-radius: 5px;
     line-height: 150%;
@@ -88,7 +88,7 @@ div.content_dps {
     text-align: left;
 }
 
-a.button_dps {
+a.button_sbs {
     text-decoration: none;
     background-color: #ad740a;
     border-radius: 3px;
@@ -104,12 +104,12 @@ a.button_dps {
     user-select: none;
 }
 
-a.button_dps.close {
+a.button_sbs.close {
     float: right;
     margin: 10px;
 }
 
-a.button_dps:hover {
+a.button_sbs:hover {
     background-color: #ad740a;
     color: white;
     user-select: none;
@@ -125,7 +125,7 @@ a.button_dps:hover {
     display: none;
 }
 
-a.button_dps.active {
+a.button_sbs.active {
     background-color: #ad740a;
     color: white;
     user-select: none;
