@@ -250,7 +250,10 @@ def generate_html_and_json(generate_roots: bool = True):
             html_string += f"""<div id="example_sbs_{w.pali_}" class="content_sbs hidden"><a class="button_sbs close" href="javascript:void(0);" onclick="button_click(this)" data-target="example_sbs_{w.pali_}">close</a>"""
 
             html_string += f"""<p>{w.eg1}<p class="sutta_sbs">{w.source1} {w.sutta1}</p>"""
-            html_string += f"""<p>{w.eg2}<p class="sutta_sbs">{w.source2} {w.sutta2}<br>{w.chapter}</p>"""
+            html_string += f"""<p>{w.eg2}<p class="sutta_sbs">{w.source2} {w.sutta2}"""
+
+            if w.chapter != "":
+                html_string += f"""<br>{w.chapter}, {w.sbs_pali_chant}, {w.sbs_eng_chant}</p>"""
             html_string += f"""</div>"""
 
         elif w.eg1 != "" and w.eg2 == "":
@@ -264,7 +267,10 @@ def generate_html_and_json(generate_roots: bool = True):
 
             html_string += f"""<div id="example_sbs_{w.pali_}" class="content_sbs hidden"><a class="button_sbs close" href="javascript:void(0);" onclick="button_click(this)" data-target="example_sbs_{w.pali_}">close</a>"""
 
-            html_string += f"""<p>{w.eg2}<p class="sutta_sbs">{w.source2} {w.sutta2}<br>{w.chapter}</p>"""
+            html_string += f"""<p>{w.eg2}<p class="sutta_sbs">{w.source2} {w.sutta2}"""
+
+            if w.chapter != "":
+                html_string += f"""<br>{w.chapter}, {w.sbs_pali_chant}, {w.sbs_eng_chant}</p>"""
             html_string += f"""</div>"""
 
         # inflection table
