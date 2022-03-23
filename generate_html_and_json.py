@@ -102,10 +102,10 @@ def generate_html_and_json(generate_roots: bool = True):
             html_string += f"""<a class="button_sbs" href="javascript:void(0);" onclick="button_click(this)" data-target="example_sbs_{w.pali_}">examples</a>"""
 
         if w.pos in conjugations:
-            html_string += f"""<a class="button_sbs" href="javascript:void(0);" onclick="button_click(this)" data-target="conjugation_sbs_{w.pali_}">declensions</a>"""
+            html_string += f"""<a class="button_sbs" href="javascript:void(0);" onclick="button_click(this)" data-target="conjugation_sbs_{w.pali_}">conjugation</a>"""
 
         if w.pos in declensions:
-            html_string += f"""<a class="button_sbs" href="javascript:void(0);" onclick="button_click(this)" data-target="declension_sbs_{w.pali_}">conjugations</a>"""
+            html_string += f"""<a class="button_sbs" href="javascript:void(0);" onclick="button_click(this)" data-target="declension_sbs_{w.pali_}">declension</a>"""
 
         # if w.pos == "sandhi" or w.pos == "idiom":
         #     html_string += f"""<a class="button_sbs" href="javascript:void(0);" onclick="button_click(this)" data-target="inflection_sbs_{w.pali_}">inflection</a>"""
