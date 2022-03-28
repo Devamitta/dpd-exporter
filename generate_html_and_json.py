@@ -121,7 +121,7 @@ def generate_html_and_json(generate_roots: bool = True):
 
         # grammar
 
-        html_string += f"""<div id="grammar_sbs_{w.pali_}" class="content_sbs hidden"><a class="button_sbs close" href="javascript:void(0);" onclick="button_click(this)" data-target="grammar_sbs_{w.pali_}">grammar</a>"""
+        html_string += f"""<div id="grammar_sbs_{w.pali_}" class="content_sbs hidden">"""
         html_string += f"""<table class = "table1_sbs">"""
         if w.pos != "":
             html_string += f"""<tr><th>Grammar</th><td>{w.pos}"""
@@ -247,7 +247,7 @@ def generate_html_and_json(generate_roots: bool = True):
 
         if w.eg1 != "" and w.eg2 != "":
 
-            html_string += f"""<div id="example_sbs_{w.pali_}" class="content_sbs hidden"><a class="button_sbs close" href="javascript:void(0);" onclick="button_click(this)" data-target="example_sbs_{w.pali_}">examples</a>"""
+            html_string += f"""<div id="example_sbs_{w.pali_}" class="content_sbs hidden">"""
 
             html_string += f"""<p>{w.eg1}<p class="sutta_sbs">{w.source1} {w.sutta1}</p>"""
             html_string += f"""<p>{w.eg2}<p class="sutta_sbs">{w.source2} {w.sutta2}"""
@@ -258,14 +258,14 @@ def generate_html_and_json(generate_roots: bool = True):
 
         elif w.eg1 != "" and w.eg2 == "":
 
-            html_string += f"""<div id="example_sbs_{w.pali_}" class="content_sbs hidden"><a class="button_sbs close" href="javascript:void(0);" onclick="button_click(this)" data-target="example_sbs_{w.pali_}">example</a>"""
+            html_string += f"""<div id="example_sbs_{w.pali_}" class="content_sbs hidden">"""
 
             html_string += f"""<p>{w.eg1}<p class="sutta_sbs">{w.source1} {w.sutta1}</p>"""
             html_string += f"""</div>"""
 
         elif w.eg1 == "" and w.eg2 != "":
 
-            html_string += f"""<div id="example_sbs_{w.pali_}" class="content_sbs hidden"><a class="button_sbs close" href="javascript:void(0);" onclick="button_click(this)" data-target="example_sbs_{w.pali_}">example</a>"""
+            html_string += f"""<div id="example_sbs_{w.pali_}" class="content_sbs hidden">"""
 
             html_string += f"""<p>{w.eg2}<p class="sutta_sbs">{w.source2} {w.sutta2}"""
 
@@ -290,11 +290,11 @@ def generate_html_and_json(generate_roots: bool = True):
 
             if w.pos in declensions:
 
-                html_string += f"""<div id="declension_sbs_{w.pali_}" class="content_sbs hidden"><a class="button_sbs close" href="javascript:void(0);" onclick="button_click(this)" data-target="declension_sbs_{w.pali_}">declension</a>"""
+                html_string += f"""<div id="declension_sbs_{w.pali_}" class="content_sbs hidden">"""
 
             if w.pos in conjugations:
 
-                html_string += f"""<div id="conjugation_sbs_{w.pali_}" class="content_sbs hidden"><a class="button_sbs close" href="javascript:void(0);" onclick="button_click(this)" data-target="conjugation_sbs_{w.pali_}">conjugation</a>"""
+                html_string += f"""<div id="conjugation_sbs_{w.pali_}" class="content_sbs hidden">"""
 
             # if w.pos == "sandhi" or w.pos == "idiom":
 
