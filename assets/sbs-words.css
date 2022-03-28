@@ -1,5 +1,5 @@
 h3 {
-    font-size: 130%;
+    font-size: 100%;
     margin-top: 10px;
     margin-bottom: 1px;
 }
@@ -142,6 +142,6 @@ a.button_sbs.active {
     user-select: none;
 }
 
-b {
+/* b {
     font-size: 105%;
-    }
+    } */
