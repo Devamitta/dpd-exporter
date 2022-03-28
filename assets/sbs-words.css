@@ -105,8 +105,19 @@ a.button_sbs {
 }
 
 a.button_sbs.close {
-    float: right;
-    margin: 10px;
+    text-decoration: none;
+    background-color: #ad740a;
+    border-radius: 3px;
+    box-shadow: 0 4px 4px -2px #5e3f06;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 80%;
+    font-weight: 400;
+    margin: 1px 1px 1px 1px;
+    padding: 2px 5px;
+    transition-duration: .2s;
+    user-select: none;
 }
 
 a.button_sbs:hover {
