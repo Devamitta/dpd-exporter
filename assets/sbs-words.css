@@ -141,3 +141,7 @@ a.button_sbs.active {
     color: white;
     user-select: none;
 }
+
+b {
+    font-size: 105%;
+    }
