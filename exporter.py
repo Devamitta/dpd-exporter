@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
+import io
 import json
+import logging
 
 import rich
+import rich.logging
 import typer
 
 from generate_html_and_json import generate_html_and_json
@@ -13,6 +16,7 @@ from helpers import copy_goldendict
 from helpers import get_resource_paths_dps
 from helpers import get_resource_paths_sbs
 from helpers import timeis, line  # TODO Use logging with the rich.logging.RichHandler for messages
+
 
 
 app = typer.Typer()
@@ -31,7 +35,6 @@ def run_generate_html_and_json(generate_roots: bool = True):
 @app.command()
 def run_generate_html_and_json_sbs(generate_roots: bool = True):
     rsc = get_resource_paths_sbs()
-    # TODO Recheck rsc
     generate_html_and_json(
         rsc=rsc,
         generate_roots=generate_roots)
@@ -104,7 +107,37 @@ def run_generate_goldendict_sbs(move_to_dest: bool = True):
     return _run_generate_goldendict(rsc, ifo, move_to_dest)
 
 
+def _exit_callback(profile: 'cProfile.Profile') -> None:
+    """ Print profiling statistics on exit """
+    profile.disable()
+    stat_stream = io.StringIO()
+    stats = pstats.Stats(profile, stream=stat_stream).sort_stats('tottime').reverse_order()
+    stats.print_stats()
+    print(stat_stream.getvalue())
+
+
+@app.callback()
+def main(log_level: str = 'info', profiling: bool = False):
+    """ The main() callback uses to define additional CLI options """
+    handler = rich.logging.RichHandler()
+    formatter = logging.Formatter(
+        fmt='%(asctime)s %(levelname)s %(message)s',
+        style='%',
+        datefmt='%Y-%m-%d %H:%M:%S')
+    handler.setFormatter(formatter)
+    logger = logging.getLogger()
+    logger.setLevel(log_level.upper())
+    logger.addHandler(handler)
+
+    if profiling:
+        profile = cProfile.Profile()
+        profile.enable()
+        atexit.register(_exit_callback, profile)
+
+
 if __name__ == "__main__":
-    # Process cli with typer.
+    import atexit
+    import cProfile
+    import pstats
 
     app()
