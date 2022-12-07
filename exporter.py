@@ -84,8 +84,8 @@ def run_generate_goldendict(move_to_dest: bool = True):
     ifo = ifo_from_opts({
             "bookname": "Пали Словарь",
             "author": "Бхиккху Дэвамитта",
-            "description": "Русско-Пали и Пали-Русский Словарь",
-            "website": "devamitta@sasanarakkha.org",
+            "description": "Пали Словарь",
+            "website": "devamitta.github.io/pali/",
     })
 
     return _run_generate_goldendict(rsc, ifo, move_to_dest)
