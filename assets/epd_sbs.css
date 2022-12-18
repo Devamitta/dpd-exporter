@@ -21,12 +21,19 @@ p {
     vertical-align: middle;
 }
 
-div.epd {
-    border: 2px solid #f5f55b;
+b {
+    color:#ab7b38;
+    font-weight: 700;
+}
+
+div.epd_sbs {
+    border: 2px solid #ab7b38;
     border-radius: 5px;
     line-height: 150%;
     overflow: auto;
     text-align: left;
 }
+
+
 </style>
 </head>

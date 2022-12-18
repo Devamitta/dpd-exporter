@@ -21,12 +21,19 @@ p {
     vertical-align: middle;
 }
 
+b {
+    color:#358109;
+    font-weight: 700;
+}
+
 div.rpd {
-    border: 2px solid #82ee23;
+    border: 2px solid #358109;
     border-radius: 5px;
     line-height: 150%;
     overflow: auto;
     text-align: left;
 }
+
+
 </style>
 </head>

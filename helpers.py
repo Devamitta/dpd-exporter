@@ -154,7 +154,7 @@ def get_resource_paths_sbs() -> ResourcePaths:
         # Project assets
         dict_words_css_path=Path('./assets/words-sbs.css'),
         dict_help_css_path=Path('./assets/help.css'),
-        definition_css_path=Path('./assets/epd.css'),
+        definition_css_path=Path('./assets/epd_sbs.css'),
         buttons_js_path=Path('./assets/buttons-sbs.js'),
         abbrev_path=Path('./assets/abbreviations.csv'),
         help_path=Path('./assets/help.csv'),
