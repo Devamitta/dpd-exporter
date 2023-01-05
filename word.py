@@ -125,7 +125,7 @@ def _load_abbrebiations_ru(rsc: ResourcePaths) -> Dict[str, str]:
                 result[row[0]] = row[6]
 
     # Sort resulting dict from longer to shorter keys to match then long lexems first
-    for key in sorted(result, key=lambda lex: len(lex), reverse=True):  # pylint: disable=unnecessary-lambda
+    for key in sorted(result, key=len, reverse=True):
         sorted_result[key] = result[key]
 
     _LOGGER.debug('Got En-Ru abbreviations dict: %s', sorted_result)
