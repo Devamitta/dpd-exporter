@@ -110,6 +110,7 @@ NMS	Nibbana: The Mind Stilled by Kaṭukurunde Ñāṇananda		Ниббана: У
 nom	nominative case	paṭhamā, paccattavacana	именительный падеж	tuvaṃ - pron, 2nd <b>nom</b> sg of tvaṃ	The category of nouns serving as the grammatical subject of a verb	имен
 noun	noun; substantive	nāma; nāmanāma	существительное	samaṇa; purisa; paṭipadā	A content word that can be used to refer to a person, place, thing, quality, or action; the word class that can serve as the subject or object of a verb, the object of a preposition, or in apposition (e.g. recluse; man; method)	сущ
 nt	neuter noun	napuṃsaka; napuṁsakaliṅga	средний род	citta, rūpa, viññāṇa		ср
+neut	neuter noun	napuṃsaka; napuṁsakaliṅga	средний род	citta, rūpa, viññāṇa		сред
 onom	onomatopoeia		ономатопея, звукоподражание	capucapu, sū, surusuru	Using words that imitate the sound they denote	оном
 opt	optative mood	sattamī	оптативное, желательное наклонение	siyā; gaccheyya; uddiseyya	A mood that expresses a wish, probability, advice or capability; expressed in English by modal verbs (should / could / may / might)	желат
 ordin	ordinal number	saṅkhyāpūraṇa	порядковое числительное	paṭhama; dutiya; tatiya	The number designating place in an ordered sequence (e.g. first; second; third)	поряд.ч
@@ -134,6 +135,7 @@ PRS	Padarūpasiddhi		Падарупасиддхи
 ptp	potential particle, future passive participle; future perfect conditional	kicca	причастие будущего времени	karaṇīya; veditabba; sikkhitabba	Verbal adjectives, they give more information about the noun they are describing. (e.g. ought to be done; can be known; should be practised)	прич.буд
 PV	Petavatthu		Пета Ваттху		Book 7 of the Khuddaka Nikāya; lit. stories about ghosts	
 reflx	reflexive verb or the middle voice		возвратный глагол; средний залог	karomase; sikkhassu; bhāvayate	The reflexive voice contains the idea of an action coming back to the person who did the action, i.e. reflecting back to the doer. Reflexive verbs can be translated into English with a reflexive pronoun. (he himself, they themselves etc.)	возвр
+reflexive	reflexive verb or the middle voice		возвратный глагол; средний залог	karomase; sikkhassu; bhāvayate	The reflexive voice contains the idea of an action coming back to the person who did the action, i.e. reflecting back to the doer. Reflexive verbs can be translated into English with a reflexive pronoun. (he himself, they themselves etc.)	возвр
 sandhi	sandhi compound		слияние слов; сандхи	evaṃ + eva > evam'eva	It refers to the changes that take place when the different parts of the speech are joined together.	сандхи
 SBS-PER	SBS Pāli English Recitations		Сборник SBS		"Download the latest version <a class=""link"" href=""https://github.com/sasanarakkha/pali-English-recitations/releases/latest"">here</a>"	
 SCPN	Syntax of the Case in the Pali Nikayas by O.H. de A. Wijesekera		Синтакс падежей в Пали Никая (Виджесекера)		"<a class=""link"" href=""https://www.ancient-buddhist-texts.net/Textual-Studies/Syntax-of-the-Cases/Syntax-of-the-Cases.pdf"">read online</a>"	
