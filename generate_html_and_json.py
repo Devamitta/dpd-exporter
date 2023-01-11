@@ -122,9 +122,9 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
     kind = rsc['kind']
     assert kind in list(Kind), 'Invalid kind get from resources'
 
-    rich.print(f'{timeis()} [yellow]generate html and json')
+    rich.print(f'{timeis()} [yellow]generate html and json {kind}')
     rich.print(f'{timeis()} {line()}')
-    rich.print(f'{timeis()} [green]generating dps html')
+    rich.print(f'{timeis()} [green]generating html {kind}')
 
     error_log = ''
 

@@ -24,9 +24,6 @@ ${result}
 <body>
 <div class="content_dps_en">
     <p>
-        % if word.ex != '':
-        <b>(cl.${word.ex}) | </b>
-        %endif
         % if word.pos != '':
         ${word.pos}. <b>${word.meaning}</b>
         % endif
@@ -100,21 +97,11 @@ ${button_template.format(target=f'feedback_dps_en_{word.pali_}', name='feedback'
     % if word.eg1 != '':
     <p>
         ${word.eg1}<p class="sutta_dps_en">${word.source1} ${word.sutta1}</p>
-        % if word.chapter1 != '':
-        <p class="sutta_dps_en">
-            ${list_non_empty([word.chapter1, word.sbs_pali_chant1, word.sbs_eng_chant1])}
-        </p>
-        % endif
     </p>
     % endif
     % if word.eg2 != '':
     <p>
         ${word.eg2}<p class="sutta_dps_en">${word.source2} ${word.sutta2}</p>
-        % if word.chapter2 != '':
-        <p class="sutta_dps_en">
-            ${list_non_empty([word.chapter2, word.sbs_pali_chant2, word.sbs_eng_chant2])}
-        </p>
-        %endif
     </p>
     % endif
     % if word.eg3 != '':
@@ -122,15 +109,7 @@ ${button_template.format(target=f'feedback_dps_en_{word.pali_}', name='feedback'
         ${word.eg3}
         <p class="sutta_dps_en">
             ${word.source3} ${word.sutta3}
-            % if word.ex != '':
-            <b> | (cl.${word.ex})</b>
-            % endif
         </p>
-        % if word.chapter3 != '':
-        <p class="sutta_dps_en">
-            ${list_non_empty([word.chapter3, word.sbs_pali_chant3, word.sbs_eng_chant3])}
-        </p>
-        % endif
     </p>
     % endif
 
