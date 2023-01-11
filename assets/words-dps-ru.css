@@ -1,5 +1,5 @@
 h3 {
-    font-size: 100%;
+    font-size: 130%;
     margin-top: 10px;
     margin-bottom: 1px;
 }
@@ -25,17 +25,17 @@ p.heading b {
     font-weight: 700;
 }
 
-p.sutta_sbs {
-    color: #ab7b38;
+p.sutta_dps_ru {
+    color: #358109;
     font-style: italic;
 }
 
-table.table1_sbs {
+table.table1_dps_ru {
     border: 1px solid transparent;
     border-collapse: collapse;
 }
 
-table.table1_sbs td, table.table1_sbs th {
+table.table1_dps_ru td, table.table1_dps_ru th {
     border: 1px solid transparent;
     border-collapse: collapse;
     line-height: 150%;
@@ -46,8 +46,8 @@ table.table1_sbs td, table.table1_sbs th {
     vertical-align: top;
 }
 
-table.table1_sbs th {
-    color: #ab7b38;
+table.table1_dps_ru th {
+    color: #358109;
     font-weight: 700;
     white-space: nowrap;
 }
@@ -74,7 +74,7 @@ table.dataframe td,table.dataframe th {
 } */
 
 table.dataframe th {
-    color: #00A4CC;
+    color: #358109;
     font-weight: 700;
     white-space: nowrap;
 }
@@ -83,19 +83,19 @@ input {
     display: none;
 }
 
-div.content_sbs {
-    border: 2px solid #ab7b38;
+div.content_dps_ru {
+    border: 2px solid #358109;
     border-radius: 5px;
     line-height: 150%;
     overflow: auto;
     text-align: left;
 }
 
-a.button_sbs {
+a.button_dps_ru {
     text-decoration: none;
-    background-color: #c39a4e;
+    background-color: #9ff16f;
     border-radius: 3px;
-    box-shadow: 0 4px 4px -2px #888888;
+    box-shadow: 0 4px 4px -2px #358109;
     color: #000;
     cursor: pointer;
     display: inline-block;
@@ -107,20 +107,20 @@ a.button_sbs {
     user-select: none;
 }
 
-a.button_sbs.close {
+a.button_dps_ru.close {
     float: right;
     margin: 10px;
 }
 
-a.button_sbs:hover {
-    background-color: #ab7b38;
+a.button_dps_ru:hover {
+    background-color: #358109;
     color: white;
     user-select: none;
 }
 
 .link {
     border-radius: 5px;
-    color: #ab7b38;
+    color: #00A4CC;
     font-weight: 700;
 }
 
@@ -128,12 +128,8 @@ a.button_sbs:hover {
     display: none;
 }
 
-a.button_sbs.active {
-    background-color: #ab7b38;
+a.button_dps_ru.active {
+    background-color: #358109;
     color: white;
     user-select: none;
 }
-
-/* b {
-    font-size: 105%;
-    } */

@@ -10,16 +10,16 @@ from pandas.core.frame import Series
 from helpers import Kind
 from helpers import ENCODING
 from helpers import ResourcePaths
-from helpers import get_resource_paths_dps
+from helpers import get_resource_paths_dps_ru
 
 _LOGGER = logging.getLogger(__name__)
 
-class DpsWord:
+class DpsRuWord:
     abbreviations_ru = None
 
     def __init__(self, df: DataFrame, row: int):
-        if DpsWord.abbreviations_ru is None:
-            DpsWord.abbreviations_ru = _load_abbrebiations_ru(rsc=get_resource_paths_dps())  # TODO Pass rsc
+        if DpsRuWord.abbreviations_ru is None:
+            DpsRuWord.abbreviations_ru = _load_abbrebiations_ru(rsc=get_resource_paths_dps_ru())  # TODO Pass rsc
 
         self.pali: str = df.loc[row, "Pāli1"]
         self.pali_: str = "_" + re.sub(" ", "_", self.pali)
@@ -100,7 +100,7 @@ class AbbreviationEntry:
         self.explanation = series.iloc[5]
         ru_abbrev = series.iloc[6]
 
-        if kind == Kind.DPS:
+        if kind == Kind.DPSRU:
             if ru_abbrev:
                 self.abbrev = ru_abbrev
 

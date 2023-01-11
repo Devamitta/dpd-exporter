@@ -19,11 +19,11 @@ from html_components import AbbreviationTemplate
 from html_components import HeaderTemplate
 from html_components import WordTemplate
 from word import AbbreviationEntry
-from word import DpsWord
+from word import DpsRuWord
 
 
 # TODO Merge with sbs version (use a dict for lang-specific entries)
-def _full_text_dps_entry(word: DpsWord) -> str:
+def _full_text_dps_ru_entry(word: DpsRuWord) -> str:
     comm_text = re.sub('<br/>', ' ', word.comm)
     comm_text = re.sub('<b>', '', comm_text)
     comm_text = re.sub('</b>', '', comm_text)
@@ -55,7 +55,38 @@ def _full_text_dps_entry(word: DpsWord) -> str:
     return result
 
 
-def _full_text_sbs_entry(word: DpsWord) -> str:
+def _full_text_sbs_entry(word: DpsRuWord) -> str:
+    comm_text = re.sub('<br/>', ' ', word.comm)
+    comm_text = re.sub('<b>', '', comm_text)
+    comm_text = re.sub('</b>', '', comm_text)
+
+    construction_text = re.sub('<br/>', ', ', word.construction)
+
+    result = ''
+    result += string_if(word.pos, f'{word.pali}. {word.pos}')
+
+    for i in [word.grammar, word.derived, word.neg, word.verb, word.trans]:
+        result += string_if(i, f', {i}')
+
+    result += string_if(word.case, f' ({word.case})')
+    result += f'. {word.meaning}'
+    result += string_if(word.russian, f'. {word.russian}')
+    result += string_if(word.root, f'. root: {word.root}')
+    result += format_if(word.base, '. base: {}')
+
+    result += format_if(construction_text, '. construction: {}')
+
+    result += format_if(word.var, 'variant: {}')
+    result += format_if(comm_text, '. commentary: {}')
+    result += format_if(word.notes, '. notes: {}')
+    result += format_if(word.sk, '. sanskrit: {}')
+    result += format_if(word.sk_root, '. sk. root: {}')
+    result += '\n'
+
+    return result
+
+
+def _full_text_dps_en_entry(word: DpsRuWord) -> str:
     comm_text = re.sub('<br/>', ' ', word.comm)
     comm_text = re.sub('<b>', '', comm_text)
     comm_text = re.sub('</b>', '', comm_text)
@@ -117,19 +148,21 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
     word_template = WordTemplate(rsc['word_template_path'])
 
     for row in range(df_length):
-        word = DpsWord(df, row)
+        word = DpsRuWord(df, row)
 
-        if rsc['kind'] is Kind.DPS:
+        if rsc['kind'] is Kind.DPSRU:
             word.translate_abbreviations()
 
         if row % 5000 == 0 or row % df_length == 0:
             rich.print(f'{timeis()} {row}/{df_length}\t{word.pali}')
 
         html_string = ''
-        if kind is Kind.DPS:
-            text_full = _full_text_dps_entry(word=word)
+        if kind is Kind.DPSRU:
+            text_full = _full_text_dps_ru_entry(word=word)
         elif kind is Kind.SBS:
             text_full = _full_text_sbs_entry(word=word)
+        elif kind is Kind.DPSEN:
+            text_full = _full_text_dps_en_entry(word=word)
 
         text_concise = ''
 
@@ -137,7 +170,7 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
         html_string += header_template.render(css=words_css, js=buttons_js)
 
         # summary
-        if kind is Kind.DPS:
+        if kind is Kind.DPSRU:
             if word.russian == '':
                 text_concise += f'{word.pali}. {word.pos}. {word.meaning}.'
             else:
@@ -156,6 +189,13 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
 
             if word.sbs_meaning == '':
                 text_concise += f" {word.meaning}"
+
+        elif kind is Kind.DPSEN:
+            text_concise = f'{word.pali}.'
+
+            if word.pos != '':
+                text_concise += f"{word.pos}. {word.meaning}"
+
 
         # inflection table
         if word.pos not in INDECLINABLES:
@@ -207,11 +247,11 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
     text_data_concise = re.sub('ṃ', 'ṁ', text_data_concise)
 
     # write text versions
-    p = rsc['output_share_dir'].joinpath('dps_full.txt')
+    p = rsc['output_share_dir'].joinpath('dps_ru_full.txt')
     with open(p, 'w', encoding=ENCODING) as f:
         f.write(text_data_full)
 
-    p = rsc['output_share_dir'].joinpath('dps_concise.txt')
+    p = rsc['output_share_dir'].joinpath('dps_ru_concise.txt')
     with open(p, 'w', encoding=ENCODING) as f:
         f.write(text_data_concise)
 
@@ -311,7 +351,7 @@ def _generate_help_html(data: DataFrames, rsc: ResourcePaths) -> List[List[str]]
         html_string += "<body>"
 
         # summary
-        if rsc['kind'] is Kind.DPS:
+        if rsc['kind'] is Kind.DPSRU:
             html_string += f'<div class="help"><p>помощь. <b>{help_title}</b>. {meaning}</p></div>'
         else:
             html_string += f'<div class="help"><p>help. <b>{help_title}</b>. {meaning}</p></div>'
@@ -339,13 +379,13 @@ def _generate_definition_html(data: DataFrames, rsc: ResourcePaths) -> List[List
     definition = {}
 
     for row in range(df_length):
-        word = DpsWord(df, row)
+        word = DpsRuWord(df, row)
 
-        if rsc['kind'] is Kind.DPS:
+        if rsc['kind'] is Kind.DPSRU:
             word.translate_abbreviations()
 
         meanings_list = []
-        meaning_data = word.russian if kind is Kind.DPS else word.meaning
+        meaning_data = word.russian if kind is Kind.DPSRU else word.meaning
         meaning_data = re.sub(r'\?\?', '', meaning_data)
 
         if row % 10000 == 0:
@@ -379,7 +419,7 @@ def _generate_definition_html(data: DataFrames, rsc: ResourcePaths) -> List[List
 
     definition_data_list = []
 
-    div_class = 'rpd' if kind is Kind.DPS else 'epd_sbs'
+    div_class = 'rpd' if kind is Kind.DPSRU else 'epd_sbs'
     for key, value in definition.items():
         html_string = ''
         html_string = definition_css

@@ -7,8 +7,12 @@
 <a class="link" target="_blank" href="${href}"/>${text}</a>\
 </%def>
 
-<%def name='google_link_dps(entry, text, args=[])'>\
+<%def name='google_link_dps_ru(entry, text, args=[])'>\
 ${_google_link('https://docs.google.com/forms/d/1iMD9sCSWFfJAFCFYuG9HRIyrr9KFRy0nAOVApM998wM/viewform', entry, text, args)}\
+</%def>
+
+<%def name='google_link_dps_en(entry, text, args=[])'>\
+${_google_link('https://docs.google.com/forms/d/e/1FAIpQLScNC5v2gQbBCM3giXfYIib9zrp-WMzwJuf_iVXEMX2re4BFFw/viewform', entry, text, args)}\
 </%def>
 
 <%def name='google_link_sbs(entry, text, args=[])'>\

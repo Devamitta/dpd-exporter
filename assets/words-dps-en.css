@@ -1,5 +1,5 @@
 h3 {
-    font-size: 130%;
+    font-size: 100%;
     margin-top: 10px;
     margin-bottom: 1px;
 }
@@ -25,17 +25,17 @@ p.heading b {
     font-weight: 700;
 }
 
-p.sutta_dps {
+p.sutta_dps_en {
     color: #358109;
     font-style: italic;
 }
 
-table.table1_dps {
+table.table1_dps_en {
     border: 1px solid transparent;
     border-collapse: collapse;
 }
 
-table.table1_dps td, table.table1_dps th {
+table.table1_dps_en td, table.table1_dps_en th {
     border: 1px solid transparent;
     border-collapse: collapse;
     line-height: 150%;
@@ -46,7 +46,7 @@ table.table1_dps td, table.table1_dps th {
     vertical-align: top;
 }
 
-table.table1_dps th {
+table.table1_dps_en th {
     color: #358109;
     font-weight: 700;
     white-space: nowrap;
@@ -74,7 +74,7 @@ table.dataframe td,table.dataframe th {
 } */
 
 table.dataframe th {
-    color: #00A4CC;
+    color: #358109;
     font-weight: 700;
     white-space: nowrap;
 }
@@ -83,7 +83,7 @@ input {
     display: none;
 }
 
-div.content_dps {
+div.content_dps_en {
     border: 2px solid #358109;
     border-radius: 5px;
     line-height: 150%;
@@ -91,11 +91,11 @@ div.content_dps {
     text-align: left;
 }
 
-a.button_dps {
+a.button_dps_en {
     text-decoration: none;
     background-color: #9ff16f;
     border-radius: 3px;
-    box-shadow: 0 4px 4px -2px #358109;
+    box-shadow: 0 4px 4px -2px #888888;
     color: #000;
     cursor: pointer;
     display: inline-block;
@@ -107,12 +107,12 @@ a.button_dps {
     user-select: none;
 }
 
-a.button_dps.close {
+a.button_dps_en.close {
     float: right;
     margin: 10px;
 }
 
-a.button_dps:hover {
+a.button_dps_en:hover {
     background-color: #358109;
     color: white;
     user-select: none;
@@ -128,8 +128,12 @@ a.button_dps:hover {
     display: none;
 }
 
-a.button_dps.active {
+a.button_dps_en.active {
     background-color: #358109;
     color: white;
     user-select: none;
 }
+
+/* b {
+    font-size: 105%;
+    } */

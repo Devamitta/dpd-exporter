@@ -11,7 +11,7 @@ from pandas.core.frame import Series
 
 import helpers
 
-from word import DpsWord
+from word import DpsRuWord
 
 
 class TemplateBase:
@@ -38,7 +38,7 @@ class HeaderTemplate(TemplateBase):
 
 
 class WordTemplate(TemplateBase):
-    def render(self, word: DpsWord, table_data_read: str) -> str:
+    def render(self, word: DpsRuWord, table_data_read: str) -> str:
         return self._render_helper(
             conjugations=helpers.CONJUGATIONS,
             declensions=helpers.DECLENSIONS,
