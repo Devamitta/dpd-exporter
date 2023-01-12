@@ -196,10 +196,9 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
             if word.pos != '':
                 text_concise += f"{word.pos}. {word.meaning}"
 
-
         # inflection table
         if word.pos not in INDECLINABLES:
-            table_path = rsc['inflections_dir'].joinpath("output/html tables/").joinpath(word.pali + ".html")
+            table_path = rsc['inflections_html_tables_dir']/f'{word.pali}.html'
 
             table_data_read = ''
             try:

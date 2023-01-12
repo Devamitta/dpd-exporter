@@ -58,6 +58,7 @@ class ResourcePaths(TypedDict):
     output_share_dir: Path
     error_log_dir: Path
     inflections_dir: Path
+    inflections_html_tables_dir: Path
     words_path: Path
     abbrev_path: Path
     help_path: Path
@@ -119,6 +120,7 @@ def get_resource_paths_dps_ru() -> ResourcePaths:
         # Project input
         abbreviation_template_path=Path('./assets/templates/abbreviation-dps-ru.html'),
         inflections_dir=dps_dir.joinpath('inflection/'),
+        inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_dps/',
         words_path=dps_dir.joinpath('spreadsheets/dps-full.csv'),
         icon_path=Path('./logo/book.bmp'),
         word_template_path=Path('./assets/templates/word-dps-ru.html'),
@@ -161,6 +163,7 @@ def get_resource_paths_sbs() -> ResourcePaths:
         help_path=Path('./assets/help.csv'),
         # Project input
         inflections_dir=dps_dir.joinpath('inflection/'),
+        inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_sbs/',
         words_path=dps_dir.joinpath('spreadsheets/sbs-pd.csv'),
         icon_path=Path('./logo/head_brown.bmp'),
         abbreviation_template_path=Path('./assets/templates/abbreviation-sbs.html'),
@@ -204,6 +207,7 @@ def get_resource_paths_dps_en() -> ResourcePaths:
         help_path=Path('./assets/help.csv'),
         # Project input
         inflections_dir=dps_dir.joinpath('inflection/'),
+        inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_dps/',
         words_path=dps_dir.joinpath('spreadsheets/dps-full.csv'),
         icon_path=Path('./logo/book.bmp'),
         abbreviation_template_path=Path('./assets/templates/abbreviation-dps-en.html'),
