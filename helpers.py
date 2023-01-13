@@ -207,7 +207,7 @@ def get_resource_paths_dps_en() -> ResourcePaths:
         help_path=Path('./assets/help.csv'),
         # Project input
         inflections_dir=dps_dir.joinpath('inflection/'),
-        inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_dps/',
+        inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_sbs/',
         words_path=dps_dir.joinpath('spreadsheets/dps-full.csv'),
         icon_path=Path('./logo/book.bmp'),
         abbreviation_template_path=Path('./assets/templates/abbreviation-dps-en.html'),
