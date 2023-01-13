@@ -162,8 +162,8 @@ def get_resource_paths_sbs() -> ResourcePaths:
         abbrev_path=Path('./assets/abbreviations.csv'),
         help_path=Path('./assets/help.csv'),
         # Project input
-        inflections_dir=dps_dir.joinpath('inflection/'),
-        inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_sbs/',
+        inflections_dir=dps_dir.joinpath('inflection-en/'),
+        inflections_html_tables_dir=dps_dir/'inflection-en/output/html_tables_sbs/',
         words_path=dps_dir.joinpath('spreadsheets/sbs-pd.csv'),
         icon_path=Path('./logo/head_brown.bmp'),
         abbreviation_template_path=Path('./assets/templates/abbreviation-sbs.html'),
@@ -206,8 +206,8 @@ def get_resource_paths_dps_en() -> ResourcePaths:
         abbrev_path=Path('./assets/abbreviations.csv'),
         help_path=Path('./assets/help.csv'),
         # Project input
-        inflections_dir=dps_dir.joinpath('inflection/'),
-        inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_sbs/',
+        inflections_dir=dps_dir.joinpath('inflection-en/'),
+        inflections_html_tables_dir=dps_dir/'inflection-en/output/html_tables_sbs/',
         words_path=dps_dir.joinpath('spreadsheets/dps-full.csv'),
         icon_path=Path('./logo/book.bmp'),
         abbreviation_template_path=Path('./assets/templates/abbreviation-dps-en.html'),
