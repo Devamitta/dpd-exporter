@@ -5,7 +5,7 @@
         '<a class="button_sbs" href="javascript:void(0);" onclick="button_click(this)"'
         ' data-target="{target}">{name}</a>')
 
-    examples = [i for i in [word.eg1, word.eg2, word.eg3] if i != '']
+    examples = [i for i in [word.eg1, word.eg2, word.eg3, word.eg4] if i != '']
 
     pos_string = ''
     if word.pos != '':
@@ -14,6 +14,7 @@
         pos_string += ', '.join(pos_entries)
         if word.case != '':
             pos_string += f' ({word.case})'
+
 %>
 
 <%def name='list_non_empty(values)'>
@@ -31,7 +32,7 @@ ${result}
         ${word.pos}.
         % endif
         % if word.sbs_meaning != '':
-        <b>${word.sbs_meaning}</b>
+        <b>${word.meaning}; ${word.sbs_meaning}</b>
         % else:
         <b>${word.meaning}</b>
         % endif
@@ -65,7 +66,7 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
         </tr>
         % endif
 
-        <tr valign="top"><th>Meaning</th><td><b>${word.meaning}</b></td></tr>
+        <tr valign="top"><th>Meaning</th><td><b>${word.meaning}</b>; <b>${word.sbs_meaning}</b></td></tr>
 
         % if word.russian!= '':
         <tr valign="top"><th>Russian</th><td><b>${word.russian}</b></td></tr>
@@ -80,6 +81,15 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
         % if word.construction != '':
         <tr valign="top"><th>Construction</th><td>${word.construction}</td></tr>
         % endif
+        % if word.comp != '':
+        <tr valign="top"><th>Compound</th><td>${word.comp} (${word.comp_constr})</td></tr>
+        % endif
+        % if word.derivative != '':
+        <tr valign="top"><th>Derivative</th><td>${word.derivative} (${word.suffix})</td></tr>
+        % endif
+        % if word.pc != '':
+        <tr valign="top"><th>Phonetic</th><td>${word.pc}</td></tr>
+        % endif
         % if word.var != '':
         <tr valign="top"><th>Variant</th><td>${word.var}</td></tr>
         % endif
@@ -88,6 +98,9 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
         % endif
         % if word.notes != '':
         <tr valign="top"><th>Notes</th><td>${word.notes}</td></tr>
+        % endif
+        % if word.notes == '' and word.notes_old != '':
+        <tr valign="top"><th>Notes</th><td>${word.notes_old}</td></tr>
         % endif
         % if word.sk != '':
         <tr valign="top"><th>Sanskrit</th><td><i>${word.sk}</i></td></tr>
@@ -127,13 +140,23 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
         ${word.eg3}
         <p class="sutta_sbs">
             ${word.source3} ${word.sutta3}
-            % if word.ex != '':
-            <b> | (cl.${word.ex})</b>
-            % endif
         </p>
         % if word.chapter3 != '':
         <p class="sutta_sbs">
             ${list_non_empty([word.chapter3, word.sbs_pali_chant3, word.sbs_eng_chant3])}
+        </p>
+        % endif
+    </p>
+    % endif
+    % if word.eg4 != '':
+    <p>
+        ${word.eg4}
+        <p class="sutta_sbs">
+            ${word.source4} ${word.sutta4}
+        </p>
+        % if word.chapter4 != '':
+        <p class="sutta_sbs">
+            ${list_non_empty([word.chapter4, word.sbs_pali_chant4, word.sbs_eng_chant4])}
         </p>
         % endif
     </p>

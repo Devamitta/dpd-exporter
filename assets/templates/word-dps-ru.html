@@ -9,7 +9,7 @@
         '<a class="button_dps_ru" href="javascript:void(0);" onclick="button_click(this)"'
         ' data-target="{target}">{name}</a>')
 
-    examples = [i for i in [word.eg1, word.eg2, word.eg3] if i != '']
+    examples = [i for i in [word.eg1, word.eg2, word.eg3, word.eg4] if i != '']
 
     pos_string = ''
     if word.pos != '':
@@ -62,7 +62,7 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
         </tr>
         % endif
 
-        <tr valign="top"><th>английский</th><td><b>${word.meaning}</b></td></tr>
+        <tr valign="top"><th>английский</th><td><b>${word.meaning}</b>; <b>${word.sbs_meaning}</b></td></tr>
 
         % if word.russian != "":
         <tr valign="top"><th>русский</th><td><b>${word.russian}</b></td></tr>
@@ -77,6 +77,15 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
         % if word.construction != "":
         <tr valign="top"><th>образование</th><td>${word.construction}</td></tr>
         % endif
+        % if word.comp != '':
+        <tr valign="top"><th>cоставное</th><td>${word.comp} (${word.comp_constr})</td></tr>
+        % endif
+        % if word.derivative != '':
+        <tr valign="top"><th>производное</th><td>${word.derivative} (${word.suffix})</td></tr>
+        % endif
+        % if word.pc != '':
+        <tr valign="top"><th>морф. измен.</th><td>${word.pc}</td></tr>
+        % endif
         % if word.var != "":
         <tr valign="top"><th>вариант</th><td>${word.var}</td></tr>
         % endif
@@ -85,6 +94,9 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
         % endif
         % if word.notes != "":
         <tr valign="top"><th>заметки</th><td>${word.notes}</td></tr>
+        % endif
+        % if word.notes == '' and word.notes_old != '':
+        <tr valign="top"><th>заметки</th><td>${word.notes_old}</td></tr>
         % endif
         % if word.sk != "":
         <tr valign="top"><th>санскрит</th><td><i>${word.sk}</i></td></tr>
@@ -105,8 +117,11 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
     % if word.eg2 != '':
     <p>${word.eg2}<p class="sutta_dps_ru">${word.source2} ${word.sutta2}</p></p>
     % endif
-    % if word.eg3 != '' and word.chapter3 != 'SBS':
+    % if word.eg3 != '':
     <p>${word.eg3}<p class="sutta_dps_ru">${word.source3} ${word.sutta3}</p></p>
+    % endif
+    % if word.eg4 != '':
+    <p>${word.eg4}<p class="sutta_dps_ru">${word.source4} ${word.sutta4}</p></p>
     % endif
 
     <p>

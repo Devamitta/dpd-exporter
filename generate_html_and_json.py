@@ -185,7 +185,7 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
                 text_concise += f"{word.pos}."
 
             if word.sbs_meaning != '':
-                text_concise += f" {word.sbs_meaning}"
+                text_concise += f" {word.meaning}; {word.sbs_meaning}"
 
             if word.sbs_meaning == '':
                 text_concise += f" {word.meaning}"
