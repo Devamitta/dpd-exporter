@@ -75,11 +75,18 @@ class DpsRuWord:
         self.var: str = df.loc[row, "Variant"]
         self.comm: str = re.sub(r"(.+)\.$", "\\1", df.loc[row, "Commentary"])
         self.notes: str = df.loc[row, "Notes"]
-        self.notes_old: str = df.loc[row, "Notes-old"]
         self.stem: str = df.loc[row, "Stem"]
         self.ex: str = df.loc[row, "ex"]
         self.cl: str = df.loc[row, "class"]
         self.count: str = df.loc[row, "count"]
+        self.id: str = df.loc[row, "ID"]
+        self.dpd_source1: str = df.loc[row, "DPD-Source1"]
+        self.dpd_sutta1: str = df.loc[row, "DPD-Sutta1"]
+        self.dpd_eg1: str = df.loc[row, "DPD-Example1"]
+        self.dpd_source2: str = df.loc[row, "DPD-Source2"]
+        self.dpd_sutta2: str = df.loc[row, "DPD-Sutta2"]
+        self.dpd_eg2: str = df.loc[row, "DPD-Example2"]
+        self.move: str = df.loc[row, "move"]
 
     def translate_abbreviations(self) -> None:
         # TODO Cache

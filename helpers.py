@@ -121,7 +121,7 @@ def get_resource_paths_dps_ru() -> ResourcePaths:
         abbreviation_template_path=Path('./assets/templates/abbreviation-dps-ru.html'),
         inflections_dir=dps_dir.joinpath('inflection/'),
         inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_dps/',
-        words_path=dps_dir.joinpath('spreadsheets/dps-full.csv'),
+        words_path=dps_dir.joinpath('spreadsheets/dps-dpd-ex.csv'),
         icon_path=Path('./logo/book.bmp'),
         word_template_path=Path('./assets/templates/word-dps-ru.html'),
     )
@@ -208,7 +208,7 @@ def get_resource_paths_dps_en() -> ResourcePaths:
         # Project input
         inflections_dir=dps_dir.joinpath('inflection-en/'),
         inflections_html_tables_dir=dps_dir/'inflection-en/output/html tables/',
-        words_path=dps_dir.joinpath('spreadsheets/dps-full.csv'),
+        words_path=dps_dir.joinpath('spreadsheets/dps-dpd-ex.csv'),
         icon_path=Path('./logo/book.bmp'),
         abbreviation_template_path=Path('./assets/templates/abbreviation-dps-en.html'),
         word_template_path=Path('./assets/templates/word-dps-en.html'),

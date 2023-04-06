@@ -99,9 +99,6 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
         % if word.notes != '':
         <tr valign="top"><th>Notes</th><td>${word.notes}</td></tr>
         % endif
-        % if word.notes == '' and word.notes_old != '':
-        <tr valign="top"><th>Notes</th><td>${word.notes_old}</td></tr>
-        % endif
         % if word.sk != '':
         <tr valign="top"><th>Sanskrit</th><td><i>${word.sk}</i></td></tr>
         % endif

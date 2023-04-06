@@ -95,9 +95,6 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
         % if word.notes != "":
         <tr valign="top"><th>заметки</th><td>${word.notes}</td></tr>
         % endif
-        % if word.notes == '' and word.notes_old != '':
-        <tr valign="top"><th>заметки</th><td>${word.notes_old}</td></tr>
-        % endif
         % if word.sk != "":
         <tr valign="top"><th>санскрит</th><td><i>${word.sk}</i></td></tr>
         % endif

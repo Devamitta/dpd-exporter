@@ -5,7 +5,7 @@
         '<a class="button_dps_en" href="javascript:void(0);" onclick="button_click(this)"'
         ' data-target="{target}">{name}</a>')
 
-    examples = [i for i in [word.eg1, word.eg2, word.eg3] if i != '']
+    examples = [i for i in [word.eg1, word.eg2, word.eg3, word.eg4] if i != '']
 
     pos_string = ''
     if word.pos != '':
@@ -94,22 +94,71 @@ ${button_template.format(target=f'feedback_dps_en_{word.pali_}', name='feedback'
 </div>
 
 <div id="example_dps_en_${word.pali_}" class="content_dps_en hidden">
+    % if word.move != '':
+    <p class="sutta_dps_en">new order ${word.move}</p>
+    % endif
+    <p><b>DPS</b></p>
+    <p>1.</p>
     % if word.eg1 != '':
     <p>
-        ${word.eg1}<p class="sutta_dps_en">${word.source1} ${word.sutta1}</p>
+        ${word.eg1}<p class="sutta_sbs">${word.source1} ${word.sutta1}</p>
+        % if word.chapter1 != '':
+        <p class="sutta_sbs">
+            ${list_non_empty([word.chapter1, word.sbs_pali_chant1, word.sbs_eng_chant1])}
+        </p>
+        % endif
     </p>
     % endif
+    <p>2.</p>
     % if word.eg2 != '':
     <p>
         ${word.eg2}<p class="sutta_dps_en">${word.source2} ${word.sutta2}</p>
+        % if word.chapter2 != '':
+        <p class="sutta_sbs">
+            ${list_non_empty([word.chapter2, word.sbs_pali_chant2, word.sbs_eng_chant2])}
+        </p>
+        % endif
     </p>
     % endif
+    <p>3.</p>
     % if word.eg3 != '':
     <p>
         ${word.eg3}
         <p class="sutta_dps_en">
             ${word.source3} ${word.sutta3}
         </p>
+        % if word.chapter3 != '':
+        <p class="sutta_sbs">
+            ${list_non_empty([word.chapter3, word.sbs_pali_chant3, word.sbs_eng_chant3])}
+        </p>
+        % endif
+    </p>
+    % endif
+    <p>4.</p>
+    % if word.eg4 != '':
+    <p>
+        ${word.eg4}
+        <p class="sutta_dps_en">
+            ${word.source4} ${word.sutta4}
+        </p>
+        % if word.chapter4 != '':
+        <p class="sutta_sbs">
+            ${list_non_empty([word.chapter4, word.sbs_pali_chant4, word.sbs_eng_chant4])}
+        </p>
+        % endif
+    </p>
+    % endif
+    <p><b>DPD</b></p>
+    <p>1.</p>
+    % if word.dpd_eg1 != '':
+    <p>
+        ${word.dpd_eg1}<p class="sutta_dps_en">${word.dpd_source1} ${word.dpd_sutta1}</p>
+    </p>
+    % endif
+    <p>2.</p>
+    % if word.dpd_eg2 != '':
+    <p>
+        ${word.dpd_eg2}<p class="sutta_dps_en">${word.dpd_source2} ${word.dpd_sutta2}</p>
     </p>
     % endif
 
