@@ -24,6 +24,12 @@ ${result}
 <body>
 <div class="content_dps_en">
     <p>
+        % if word.sbs_index != '':
+        <i>(SBS) | </i>
+        %endif
+        % if word.ex != '':
+        <i>(cl.${word.ex}) | </i>
+        %endif
         % if word.pos != '':
         ${word.pos}. <b>${word.meaning}</b>
         % endif
@@ -72,6 +78,15 @@ ${button_template.format(target=f'feedback_dps_en_{word.pali_}', name='feedback'
         % if word.construction != '':
         <tr valign="top"><th>Construction</th><td>${word.construction}</td></tr>
         % endif
+        % if word.comp != '':
+        <tr valign="top"><th>Compound</th><td>${word.comp} (${word.comp_constr})</td></tr>
+        % endif
+        % if word.derivative != '':
+        <tr valign="top"><th>Derivative</th><td>${word.derivative} (${word.suffix})</td></tr>
+        % endif
+        % if word.pc != '':
+        <tr valign="top"><th>Phonetic</th><td>${word.pc}</td></tr>
+        % endif
         % if word.var != '':
         <tr valign="top"><th>Variant</th><td>${word.var}</td></tr>
         % endif
@@ -95,36 +110,42 @@ ${button_template.format(target=f'feedback_dps_en_{word.pali_}', name='feedback'
 
 <div id="example_dps_en_${word.pali_}" class="content_dps_en hidden">
     % if word.move != '':
-    <p class="sutta_dps_en">new order ${word.move}</p>
+    <p class="sutta_sbs">new order ${word.move}</p>
     % endif
-    <p><b>DPS</b></p>
-    <p>1.</p>
+    <p class="sutta_sbs"><b>---DPS---</b></p>
+    <p>1. 
+    % if word.eg1 == '':
+    <i>empty</i>
+    % endif
     % if word.eg1 != '':
-    <p>
         ${word.eg1}<p class="sutta_sbs">${word.source1} ${word.sutta1}</p>
         % if word.chapter1 != '':
         <p class="sutta_sbs">
             ${list_non_empty([word.chapter1, word.sbs_pali_chant1, word.sbs_eng_chant1])}
         </p>
         % endif
-    </p>
     % endif
-    <p>2.</p>
+    </p>
+    <p>2.
+    % if word.eg2 == '':
+    <i>empty</i>
+    % endif 
     % if word.eg2 != '':
-    <p>
-        ${word.eg2}<p class="sutta_dps_en">${word.source2} ${word.sutta2}</p>
+        ${word.eg2}<p class="sutta_sbs">${word.source2} ${word.sutta2}</p>
         % if word.chapter2 != '':
         <p class="sutta_sbs">
             ${list_non_empty([word.chapter2, word.sbs_pali_chant2, word.sbs_eng_chant2])}
         </p>
         % endif
-    </p>
     % endif
-    <p>3.</p>
+    </p>
+    <p>3. 
+    % if word.eg3 == '':
+    <i>empty</i>
+    % endif 
     % if word.eg3 != '':
-    <p>
         ${word.eg3}
-        <p class="sutta_dps_en">
+        <p class="sutta_sbs">
             ${word.source3} ${word.sutta3}
         </p>
         % if word.chapter3 != '':
@@ -132,13 +153,15 @@ ${button_template.format(target=f'feedback_dps_en_{word.pali_}', name='feedback'
             ${list_non_empty([word.chapter3, word.sbs_pali_chant3, word.sbs_eng_chant3])}
         </p>
         % endif
-    </p>
     % endif
-    <p>4.</p>
+    </p>
+    <p>4. 
+    % if word.eg4 == '':
+    <i>empty</i>
+    % endif 
     % if word.eg4 != '':
-    <p>
         ${word.eg4}
-        <p class="sutta_dps_en">
+        <p class="sutta_sbs">
             ${word.source4} ${word.sutta4}
         </p>
         % if word.chapter4 != '':
@@ -146,22 +169,25 @@ ${button_template.format(target=f'feedback_dps_en_{word.pali_}', name='feedback'
             ${list_non_empty([word.chapter4, word.sbs_pali_chant4, word.sbs_eng_chant4])}
         </p>
         % endif
-    </p>
     % endif
-    <p><b>DPD</b></p>
-    <p>1.</p>
+    </p>
+    <p class="sutta_dpd"><b>---DPD---</b></p>
+    <p>1. 
+    % if word.dpd_eg1 == '':
+    <i>empty</i>
+    % endif 
     % if word.dpd_eg1 != '':
-    <p>
-        ${word.dpd_eg1}<p class="sutta_dps_en">${word.dpd_source1} ${word.dpd_sutta1}</p>
-    </p>
+        ${word.dpd_eg1}<p class="sutta_dpd">${word.dpd_source1} ${word.dpd_sutta1}</p>
     % endif
-    <p>2.</p>
+    </p>
+    <p>2. 
+    % if word.dpd_eg2 == '':
+    <i>empty</i>
+    % endif 
     % if word.dpd_eg2 != '':
-    <p>
-        ${word.dpd_eg2}<p class="sutta_dps_en">${word.dpd_source2} ${word.dpd_sutta2}</p>
-    </p>
+        ${word.dpd_eg2}<p class="sutta_dpd">${word.dpd_source2} ${word.dpd_sutta2}</p>
     % endif
-
+    </p>
     <p>
     Can you think of a better example? \
 ${google_link_dps_en(entry=word.pali, text='Add it here', args=f'&entry.326955045=Example2')}.

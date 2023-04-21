@@ -1,5 +1,5 @@
 h3 {
-    font-size: 100%;
+    font-size: 130%;
     margin-top: 10px;
     margin-bottom: 1px;
 }
@@ -27,6 +27,16 @@ p.heading b {
 
 p.sutta_dps_en {
     color: #358109;
+    font-style: italic;
+}
+
+p.sutta_dpd {
+    color: #00A4CC;
+    font-style: italic;
+}
+
+p.sutta_sbs {
+    color: #ab7b38;
     font-style: italic;
 }
 
