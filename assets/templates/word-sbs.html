@@ -36,6 +36,9 @@ ${result}
         % else:
         <b>${word.meaning}</b>
         % endif
+        % if word.meaning_lit != '':
+        ; lit. ${word.meaning_lit}
+        % endif
     </p>
 </div>
 
@@ -66,10 +69,21 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
         </tr>
         % endif
 
-        <tr valign="top"><th>Meaning</th><td><b>${word.meaning}</b>; <b>${word.sbs_meaning}</b></td></tr>
+        <tr valign="top"><th>Meaning</th><td><b>${word.meaning}</b>
+        % if word.sbs_meaning != '':
+        <b>; ${word.sbs_meaning}</b>
+        % endif
+        % if word.meaning_lit != '':
+        <b>; lit. ${word.meaning_lit}.</b>
+        % endif
+        </td></tr>
 
-        % if word.russian!= '':
-        <tr valign="top"><th>Russian</th><td><b>${word.russian}</b></td></tr>
+        % if word.russian != '':
+        <tr valign="top"><th>Russian</th><td><b>${word.russian}</b>
+        % if word.russian_lit != '':
+        <b>; досл. ${word.russian_lit}.</b>
+        % endif
+        </td></tr>
         % endif
 
         % if word.root != '':

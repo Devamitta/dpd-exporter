@@ -30,6 +30,9 @@
         ${word.pos}.
         % endif
         <b>${word.russian}</b>
+        % if word.russian_lit != '':
+        <b>; досл. ${word.russian_lit}</b>
+        % endif
     </p>
 </div>
 % endif
@@ -62,10 +65,21 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
         </tr>
         % endif
 
-        <tr valign="top"><th>английский</th><td><b>${word.meaning}</b>; <b>${word.sbs_meaning}</b></td></tr>
+        <tr valign="top"><th>английский</th><td><b>${word.meaning}</b>
+        % if word.sbs_meaning != '':
+        <b>; ${word.sbs_meaning}</b>
+        % endif
+        % if word.meaning_lit != '':
+        <b>; lit. ${word.meaning_lit}</b>
+        % endif
+        </td></tr>
 
         % if word.russian != "":
-        <tr valign="top"><th>русский</th><td><b>${word.russian}</b></td></tr>
+        <tr valign="top"><th>русский</th><td><b>${word.russian}</b>
+        % if word.russian_lit != '':
+        <b>; досл. ${word.russian_lit}</b>
+        % endif
+        </td></tr>
         % endif
 
         % if word.root != "":

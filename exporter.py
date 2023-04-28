@@ -53,7 +53,7 @@ def _run_generate_goldendict(rsc: ResourcePaths, ifo: 'StarDictIfo', move_to_des
     """Generate a Stardict-format .zip for GoldenDict."""
 
     # importing Simsapa here so other commands don't have to load it and its numerous dependencies
-    from simsapa.app.stardict import export_words_as_stardict_zip, DictEntry
+    from stardict_nu import export_words_as_stardict_zip, DictEntry
 
     rich.print(f"{timeis()} [yellow]generate goldendict")
     rich.print(f"{timeis()} {line()}")
@@ -86,7 +86,7 @@ def _run_generate_goldendict(rsc: ResourcePaths, ifo: 'StarDictIfo', move_to_des
 
 @app.command()
 def run_generate_goldendict(move_to_dest: bool = True):
-    from simsapa.app.stardict import ifo_from_opts, StarDictIfo
+    from stardict_nu import ifo_from_opts, StarDictIfo
 
     rsc = get_resource_paths_dps_ru()
 
@@ -102,7 +102,7 @@ def run_generate_goldendict(move_to_dest: bool = True):
 
 @app.command()
 def run_generate_goldendict_sbs(move_to_dest: bool = True):
-    from simsapa.app.stardict import ifo_from_opts, StarDictIfo
+    from stardict_nu import ifo_from_opts, StarDictIfo
 
     rsc = get_resource_paths_sbs()
 
@@ -118,7 +118,7 @@ def run_generate_goldendict_sbs(move_to_dest: bool = True):
 
 @app.command()
 def run_generate_goldendict_dps_en(move_to_dest: bool = True):
-    from simsapa.app.stardict import ifo_from_opts, StarDictIfo
+    from stardict_nu import ifo_from_opts, StarDictIfo
 
     rsc = get_resource_paths_dps_en()
 
