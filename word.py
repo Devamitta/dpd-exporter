@@ -84,12 +84,12 @@ class DpsRuWord:
         self.cl: str = df.loc[row, 'sbs_class']
         self.count: str = df.loc[row, 'count']
         self.id: str = df.loc[row, 'id']
-        # self.dpd_source1: str = df.loc[row, 'DPD_source_1']
-        # self.dpd_sutta1: str = df.loc[row, 'DPD_sutta_1']
-        # self.dpd_eg1: str = df.loc[row, 'DPD_example_1']
-        # self.dpd_source2: str = df.loc[row, 'DPD_source_2']
-        # self.dpd_sutta2: str = df.loc[row, 'DPD_sutta_2']
-        # self.dpd_eg2: str = df.loc[row, 'DPD_example_2']
+        self.extra_source5: str = df.loc[row, 'sbs_source_5']
+        self.extra_sutta5: str = df.loc[row, 'sbs_sutta_5']
+        self.extra_eg5: str = df.loc[row, 'sbs_example_5']
+        self.extra_pali_chant5: str = df.loc[row, 'sbs_chant_pali_5']
+        self.extra_eng_chant5: str = df.loc[row, 'sbs_chant_eng_5']
+        self.extra_chapter5: str = df.loc[row, 'sbs_chapter_5']
         # self.move: str = df.loc[row, 'move']
 
     def translate_abbreviations(self) -> None:
