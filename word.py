@@ -90,7 +90,7 @@ class DpsRuWord:
         self.extra_pali_chant5: str = df.loc[row, 'sbs_chant_pali_5']
         self.extra_eng_chant5: str = df.loc[row, 'sbs_chant_eng_5']
         self.extra_chapter5: str = df.loc[row, 'sbs_chapter_5']
-        # self.move: str = df.loc[row, 'move']
+        self.category: str = df.loc[row, 'sbs_category']
 
     def translate_abbreviations(self) -> None:
         # TODO Cache

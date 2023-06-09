@@ -28,6 +28,9 @@ ${result}
         % if word.ex != '':
         <b>(cl.${word.ex}) | </b>
         %endif
+        % if word.category != '':
+        <i>(s) | </i>
+        %endif
         % if word.pos != '':
         ${word.pos}.
         % endif
