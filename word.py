@@ -24,7 +24,7 @@ class DpsRuWord:
         self.pali: str = df.loc[row, 'pali_1']
         self.pali_: str = '_' + re.sub(' ', '_', self.pali)
         self.pali_clean: str = re.sub(r' \d*$', '', self.pali)
-        self.fin: str = df.loc[row, 'Fin']
+        # self.fin: str = df.loc[row, 'Fin']
         self.pos: str = df.loc[row, 'pos']
         # Keeps initial value even after translate_abbreviations() call
         self.pos_orig: str = self.pos
@@ -81,15 +81,15 @@ class DpsRuWord:
         self.notes_ru: str = df.loc[row, 'ru_notes']
         self.stem: str = df.loc[row, 'stem']
         self.ex: str = df.loc[row, 'sbs_class_anki']
-        self.cl: str = df.loc[row, 'sbs_class']
-        self.count: str = df.loc[row, 'count']
+        # self.cl: str = df.loc[row, 'sbs_class']
+        # self.count: str = df.loc[row, 'count']
         self.id: str = df.loc[row, 'id']
-        self.extra_source5: str = df.loc[row, 'sbs_source_5']
-        self.extra_sutta5: str = df.loc[row, 'sbs_sutta_5']
-        self.extra_eg5: str = df.loc[row, 'sbs_example_5']
-        self.extra_pali_chant5: str = df.loc[row, 'sbs_chant_pali_5']
-        self.extra_eng_chant5: str = df.loc[row, 'sbs_chant_eng_5']
-        self.extra_chapter5: str = df.loc[row, 'sbs_chapter_5']
+        # self.extra_source5: str = df.loc[row, 'sbs_source_5']
+        # self.extra_sutta5: str = df.loc[row, 'sbs_sutta_5']
+        # self.extra_eg5: str = df.loc[row, 'sbs_example_5']
+        # self.extra_pali_chant5: str = df.loc[row, 'sbs_chant_pali_5']
+        # self.extra_eng_chant5: str = df.loc[row, 'sbs_chant_eng_5']
+        # self.extra_chapter5: str = df.loc[row, 'sbs_chapter_5']
         self.category: str = df.loc[row, 'sbs_category']
 
     def translate_abbreviations(self) -> None:

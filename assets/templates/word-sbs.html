@@ -175,21 +175,7 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
         % endif
     </p>
     % endif
-    % if word.extra_eg5 != '':
-    <p>----------extra-----------</p>
-    <p>
-        ${word.extra_eg5}
-        <p class="sutta_sbs">
-            ${word.extra_source5} ${word.extra_sutta5}
-        </p>
-        % if word.extra_chapter5 != '':
-        <p class="sutta_sbs">
-            ${list_non_empty([word.extra_chapter5, word.extra_pali_chant5, word.extra_eng_chant5])}
-        </p>
-        % endif
-    </p>
-    % endif
-
+    
     <p>
     Can you think of a better example? \
 ${google_link_sbs(entry=word.pali, text='Add it here', args=f'&entry.326955045=Example2')}.
