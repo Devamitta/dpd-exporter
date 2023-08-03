@@ -15,7 +15,6 @@ from helpers import ResourcePaths
 from helpers import copy_goldendict
 from helpers import get_resource_paths_dps_ru
 from helpers import get_resource_paths_sbs
-from helpers import get_resource_paths_dps_en
 from helpers import timeis, line  # TODO Use logging with the rich.logging.RichHandler for messages
 
 
@@ -36,14 +35,6 @@ def run_generate_html_and_json(generate_roots: bool = True):
 @app.command()
 def run_generate_html_and_json_sbs(generate_roots: bool = True):
     rsc = get_resource_paths_sbs()
-    generate_html_and_json(
-        rsc=rsc,
-        generate_roots=generate_roots)
-
-
-@app.command()
-def run_generate_html_and_json_dps_en(generate_roots: bool = True):
-    rsc = get_resource_paths_dps_en()
     generate_html_and_json(
         rsc=rsc,
         generate_roots=generate_roots)
@@ -111,22 +102,6 @@ def run_generate_goldendict_sbs(move_to_dest: bool = True):
         "author": "Devamitta Bhikkhu",
         "description": "words from the SBS Pāḷi-English Recitation an other Pāḷi study tools",
         "email": "sasanarakkha.org",
-    })
-
-    return _run_generate_goldendict(rsc, ifo, move_to_dest)
-
-
-@app.command()
-def run_generate_goldendict_dps_en(move_to_dest: bool = True):
-    from stardict_nu import ifo_from_opts, StarDictIfo
-
-    rsc = get_resource_paths_dps_en()
-
-    ifo = ifo_from_opts({
-        "bookname": "Devamitta Pāḷi Study",
-        "author": "Devamitta Bhikkhu",
-        "description": "words from the Devamitta Pāḷi Study",
-        "email": "https://sasanarakkha.github.io/study-tools/dps-dictionary.html",
     })
 
     return _run_generate_goldendict(rsc, ifo, move_to_dest)
