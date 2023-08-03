@@ -9,29 +9,37 @@
         '<a class="button_dps_ru" href="javascript:void(0);" onclick="button_click(this)"'
         ' data-target="{target}">{name}</a>')
 
-    examples = [i for i in [word.eg1, word.eg2, word.eg3, word.eg4] if i != '']
+    examples = [i for i in [word.example_1, word.example_2] if i != '']
 
     pos_string = ''
     if word.pos != '':
-        derived_entry = f'<i>от {word.derived}</i>' if word.derived else ''
-        pos_entries = [i for i in [word.pos, word.grammar, derived_entry, word.neg, word.verb, word.trans] if i != '']
+        derived_entry = f'<i>от {word.derived_from}</i>' if word.derived_from else ''
+        pos_entries = [i for i in [word.grammar, word.neg, word.verb, word.trans] if i != '']
         pos_string += ', '.join(pos_entries)
-        if word.case != '':
-            pos_string += f' ({word.case})'
+        if word.plus_case != '':
+            pos_string += f' ({word.plus_case})'
 %>
 
 <body>
-% if not word.russian:
-<div class="content_dps_ru"><p>${word.pos}. <b>${word.meaning}</b> [в процессе]</p></div>
+% if not word.ru_meaning:
+<div class="content_dps_ru">
+    <p>
+        % if word.meaning_1 != '':
+        ${word.pos}. <b>${word.meaning_1}</b> [в процессе]
+        % else:
+        ${word.pos}. <b>${word.meaning_2}</b> [в процессе]
+        % endif
+    </p>
+</div>
 % else:
 <div class="content_dps_ru">
     <p>
         % if word.pos:
         ${word.pos}.
         % endif
-        <b>${word.russian}</b>
-        % if word.russian_lit != '':
-        <b>; досл. ${word.russian_lit}</b>
+        <b>${word.ru_meaning}</b>
+        % if word.ru_meaning_lit != '':
+        <b>; досл. ${word.ru_meaning_lit}</b>
         % endif
     </p>
 </div>
@@ -39,7 +47,7 @@
 
 
 <div class="button-box">
-    % if word.meaning != '':
+    % if word.ru_meaning != '':
 ${button_template.format(target=f'grammar_dps_ru_{word.pali_}', name='грамматика')}\
     % endif
     % if len(examples) == 1:
@@ -65,19 +73,23 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
         </tr>
         % endif
 
-        <tr valign="top"><th>английский</th><td><b>${word.meaning}</b>
-        % if word.sbs_meaning != '':
-        <b>; ${word.sbs_meaning}</b>
-        % endif
+        <tr valign="top">
+            <th>английский</th>
+            <td>
+                % if word.meaning_1 != '':
+                <b>${word.meaning_1}</b>
+                % else:
+                <b>${word.meaning_2}</b>
+                % endif
         % if word.meaning_lit != '':
         <b>; lit. ${word.meaning_lit}</b>
         % endif
         </td></tr>
 
-        % if word.russian != "":
-        <tr valign="top"><th>русский</th><td><b>${word.russian}</b>
-        % if word.russian_lit != '':
-        <b>; досл. ${word.russian_lit}</b>
+        % if word.ru_meaning != "":
+        <tr valign="top"><th>русский</th><td><b>${word.ru_meaning}</b>
+        % if word.ru_meaning_lit != '':
+        <b>; досл. ${word.ru_meaning_lit}</b>
         % endif
         </td></tr>
         % endif
@@ -85,35 +97,35 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
         % if word.root != "":
         <tr valign="top"><th>корень</th><td>${word.root}</td></tr>
         % endif
-        % if word.base != "":
-        <tr valign="top"><th>основа</th><td>${word.base}</td></tr>
+        % if word.root_base != "":
+        <tr valign="top"><th>основа</th><td>${word.root_base}</td></tr>
         % endif
         % if word.construction != "":
         <tr valign="top"><th>образование</th><td>${word.construction}</td></tr>
         % endif
-        % if word.comp != '':
-        <tr valign="top"><th>cоставное</th><td>${word.comp} (${word.comp_constr})</td></tr>
+        % if word.compound_type != '':
+        <tr valign="top"><th>cоставное</th><td>${word.compound_type} (${word.compound_construction})</td></tr>
         % endif
         % if word.derivative != '':
         <tr valign="top"><th>производное</th><td>${word.derivative} (${word.suffix})</td></tr>
         % endif
-        % if word.pc != '':
-        <tr valign="top"><th>морф. измен.</th><td>${word.pc}</td></tr>
+        % if word.phonetic != '':
+        <tr valign="top"><th>морф. измен.</th><td>${word.phonetic}</td></tr>
         % endif
-        % if word.var != "":
-        <tr valign="top"><th>вариант</th><td>${word.var}</td></tr>
+        % if word.variant != "":
+        <tr valign="top"><th>вариант</th><td>${word.variant}</td></tr>
         % endif
-        % if word.comm != "":
-        <tr valign="top"><th>комментарий</th><td>${word.comm}</td></tr>
+        % if word.commentary != "":
+        <tr valign="top"><th>комментарий</th><td>${word.commentary}</td></tr>
         % endif
         % if word.notes != "":
         <tr valign="top"><th>заметки</th><td>${word.notes}</td></tr>
         % endif
-        % if word.sk != "":
-        <tr valign="top"><th>санскрит</th><td><i>${word.sk}</i></td></tr>
+        % if word.sanskrit != "":
+        <tr valign="top"><th>санскрит</th><td><i>${word.sanskrit}</i></td></tr>
         % endif
-        % if word.sk_root != "":
-        <tr valign="top"><th>санск. корень</th><td><i>${word.sk_root}</i></td></tr>
+        % if word.sanskrit_root != "":
+        <tr valign="top"><th>санск. корень</th><td><i>${word.sanskrit_root}</i></td></tr>
         % endif
     </table>
     <p>
@@ -122,19 +134,12 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
 </div>
 
 <div id="example_dps_ru_${word.pali_}" class="content_dps_ru hidden">
-    % if word.eg1 != '':
-    <p>${word.eg1}<p class="sutta_dps_ru">${word.source1} ${word.sutta1}</p></p>
+    % if word.example_1 != '':
+    <p>${word.example_1}<p class="sutta_dps_ru">${word.source_1} ${word.sutta_1}</p></p>
     % endif
-    % if word.eg2 != '':
-    <p>${word.eg2}<p class="sutta_dps_ru">${word.source2} ${word.sutta2}</p></p>
+    % if word.example_2 != '':
+    <p>${word.example_2}<p class="sutta_dps_ru">${word.source_2} ${word.sutta_2}</p></p>
     % endif
-    % if word.eg3 != '':
-    <p>${word.eg3}<p class="sutta_dps_ru">${word.source3} ${word.sutta3}</p></p>
-    % endif
-    % if word.eg4 != '':
-    <p>${word.eg4}<p class="sutta_dps_ru">${word.source4} ${word.sutta4}</p></p>
-    % endif
-
     <p>
     Пожалуйста, подскажите более подходящий ${google_link_dps_ru(entry=word.pali, text='пример', args=['&entry.326955045=Пример2'])}.
     </p>

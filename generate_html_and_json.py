@@ -24,39 +24,45 @@ from word import DpsRuWord
 
 # TODO Merge with sbs version (use a dict for lang-specific entries)
 def _full_text_dps_ru_entry(word: DpsRuWord) -> str:
-    comm_text = re.sub('<br/>', ' ', word.comm)
+    comm_text = re.sub('<br/>', ' ', word.commentary)
     comm_text = re.sub('<b>', '', comm_text)
     comm_text = re.sub('</b>', '', comm_text)
 
     construction_text = re.sub('<br/>', ', ', word.construction)
 
     result = ''
-    result += string_if(not word.russian, f'{word.pali}. {word.pos}. {word.meaning}. [в процессе]')
+
+    result += string_if(not word.ru_meaning and word.meaning_1,
+                    f'{word.pali}. {word.pos}. {word.meaning_1}. [в процессе]')
+
+    result += string_if(not word.ru_meaning and not word.meaning_1,
+                    f'{word.pali}. {word.pos}. {word.meaning_2}. [в процессе]')
+   
     result += string_if(word.pos, f'{word.pali}. {word.pos}')
 
-    for i in [word.grammar, word.derived, word.neg, word.verb, word.trans]:
+    for i in [word.grammar, word.derived_from, word.neg, word.verb, word.trans]:
         result += string_if(i, f', {i}')
 
-    result += string_if(word.case, f' ({word.case})')
-    result += f'. {word.meaning}'
-    result += string_if(word.russian, f'. {word.russian}')
+    result += string_if(word.plus_case, f' ({word.plus_case})')
+    result += f'. {word.meaning_1 if word.meaning_1 else word.meaning_2}'
+    result += string_if(word.ru_meaning, f'. {word.ru_meaning}')
     result += string_if(word.root, f'. корень: {word.root}')
-    result += format_if(word.base, '. основа: {}')
+    result += format_if(word.root_base, '. основа: {}')
 
     result += format_if(construction_text, '. образование: {}')
 
-    result += format_if(word.var, 'вариант: {}')
+    result += format_if(word.variant, 'вариант: {}')
     result += format_if(comm_text, '. комментарий: {}')
     result += format_if(word.notes, '. заметки: {}')
-    result += format_if(word.sk, '. санскрит: {}')
-    result += format_if(word.sk_root, '. санск. корень: {}')
+    result += format_if(word.sanskrit, '. санскрит: {}')
+    result += format_if(word.sanskrit_root, '. санск. корень: {}')
     result += '\n'
 
     return result
 
 
 def _full_text_sbs_entry(word: DpsRuWord) -> str:
-    comm_text = re.sub('<br/>', ' ', word.comm)
+    comm_text = re.sub('<br/>', ' ', word.commentary)
     comm_text = re.sub('<b>', '', comm_text)
     comm_text = re.sub('</b>', '', comm_text)
 
@@ -65,53 +71,22 @@ def _full_text_sbs_entry(word: DpsRuWord) -> str:
     result = ''
     result += string_if(word.pos, f'{word.pali}. {word.pos}')
 
-    for i in [word.grammar, word.derived, word.neg, word.verb, word.trans]:
+    for i in [word.grammar, word.derived_from, word.neg, word.verb, word.trans]:
         result += string_if(i, f', {i}')
 
-    result += string_if(word.case, f' ({word.case})')
-    result += f'. {word.meaning}'
-    result += string_if(word.russian, f'. {word.russian}')
+    result += string_if(word.plus_case, f' ({word.plus_case})')
+    result += f'. {word.meaning_1 if word.meaning_1 else word.meaning_2}'
+    result += string_if(word.ru_meaning, f'. {word.ru_meaning}')
     result += string_if(word.root, f'. root: {word.root}')
-    result += format_if(word.base, '. base: {}')
+    result += format_if(word.root_base, '. base: {}')
 
     result += format_if(construction_text, '. construction: {}')
 
-    result += format_if(word.var, 'variant: {}')
+    result += format_if(word.variant, 'variant: {}')
     result += format_if(comm_text, '. commentary: {}')
     result += format_if(word.notes, '. notes: {}')
-    result += format_if(word.sk, '. sanskrit: {}')
-    result += format_if(word.sk_root, '. sk. root: {}')
-    result += '\n'
-
-    return result
-
-
-def _full_text_dps_en_entry(word: DpsRuWord) -> str:
-    comm_text = re.sub('<br/>', ' ', word.comm)
-    comm_text = re.sub('<b>', '', comm_text)
-    comm_text = re.sub('</b>', '', comm_text)
-
-    construction_text = re.sub('<br/>', ', ', word.construction)
-
-    result = ''
-    result += string_if(word.pos, f'{word.pali}. {word.pos}')
-
-    for i in [word.grammar, word.derived, word.neg, word.verb, word.trans]:
-        result += string_if(i, f', {i}')
-
-    result += string_if(word.case, f' ({word.case})')
-    result += f'. {word.meaning}'
-    result += string_if(word.russian, f'. {word.russian}')
-    result += string_if(word.root, f'. root: {word.root}')
-    result += format_if(word.base, '. base: {}')
-
-    result += format_if(construction_text, '. construction: {}')
-
-    result += format_if(word.var, 'variant: {}')
-    result += format_if(comm_text, '. commentary: {}')
-    result += format_if(word.notes, '. notes: {}')
-    result += format_if(word.sk, '. sanskrit: {}')
-    result += format_if(word.sk_root, '. sk. root: {}')
+    result += format_if(word.sanskrit, '. sanskrit: {}')
+    result += format_if(word.sanskrit_root, '. sanskrit root: {}')
     result += '\n'
 
     return result
@@ -161,8 +136,6 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
             text_full = _full_text_dps_ru_entry(word=word)
         elif kind is Kind.SBS:
             text_full = _full_text_sbs_entry(word=word)
-        elif kind is Kind.DPSEN:
-            text_full = _full_text_dps_en_entry(word=word)
 
         text_concise = ''
 
@@ -171,12 +144,12 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
 
         # summary
         if kind is Kind.DPSRU:
-            if word.russian == '':
-                text_concise += f'{word.pali}. {word.pos}. {word.meaning}.'
+            if word.ru_meaning == '':
+                text_concise += f'{word.pali}. {word.pos}. {word.meaning_1}.'
             else:
                 if word.pos != '':
                     text_concise += f"{word.pali}. {word.pos}."
-                text_concise += f' {word.russian}'
+                text_concise += f' {word.ru_meaning}'
 
         elif kind is Kind.SBS:
             text_concise = f'{word.pali}.'
@@ -185,22 +158,18 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
                 text_concise += f"{word.pos}."
 
             if word.sbs_meaning != '':
-                text_concise += f" {word.meaning}; {word.sbs_meaning}"
+                text_concise += f" {word.sbs_meaning}"
 
             if word.sbs_meaning == '':
-                text_concise += f" {word.meaning}"
-
-        elif kind is Kind.DPSEN:
-            text_concise = f'{word.pali}.'
-
-            if word.pos != '':
-                text_concise += f"{word.pos}. {word.meaning}"
+                text_concise += f'. {word.meaning_1 if word.meaning_1 else word.meaning_2}'
 
         # inflection table
+
+        table_data_read = ''
+
         if word.pos not in INDECLINABLES:
             table_path = rsc['inflections_html_tables_dir']/f'{word.pali}.html'
 
-            table_data_read = ''
             try:
                 with open(table_path, encoding=ENCODING) as f:
                     table_data_read = f.read()
@@ -384,7 +353,8 @@ def _generate_definition_html(data: DataFrames, rsc: ResourcePaths) -> List[List
             word.translate_abbreviations()
 
         meanings_list = []
-        meaning_data = word.russian if kind is Kind.DPSRU else word.meaning
+        meaning_data = word.ru_meaning if kind is Kind.DPSRU else (word.meaning_1 if word.meaning_1 else word.meaning_2)
+
         meaning_data = re.sub(r'\?\?', '', meaning_data)
 
         if row % 10000 == 0:
@@ -401,17 +371,17 @@ def _generate_definition_html(data: DataFrames, rsc: ResourcePaths) -> List[List
             meanings_clean = re.sub(r'(досл|lit).+$', '', meanings_clean)       # remove lit meanings
             meanings_list = meanings_clean.split(';')
 
-            for meaning in meanings_list:
-                if meaning in definition and word.case == '':
-                    definition[meaning] = f'{definition[meaning]}<br><b>{word.pali_clean}</b> {word.pos}. {meaning_data}'
-                elif meaning in definition and word.case != '':
-                    definition[meaning] = (
-                        f'{definition[meaning]}<br>'
-                        f'<b>{word.pali_clean}</b> {word.pos}. {meaning_data} ({word.case})')
-                elif meaning not in definition and word.case == '':
-                    definition.update({meaning: f'<b>{word.pali_clean}</b> {word.pos}. {meaning_data}'})
-                elif meaning not in definition and word.case != '':
-                    definition.update({meaning: f'<b>{word.pali_clean}</b> {word.pos}. {meaning_data} ({word.case})'})
+            for meaning_1 in meanings_list:
+                if meaning_1 in definition and word.plus_case == '':
+                    definition[meaning_1] = f'{definition[meaning_1]}<br><b>{word.pali_clean}</b> {word.pos}. {meaning_data}'
+                elif meaning_1 in definition and word.plus_case != '':
+                    definition[meaning_1] = (
+                        f'{definition[meaning_1]}<br>'
+                        f'<b>{word.pali_clean}</b> {word.pos}. {meaning_data} ({word.plus_case})')
+                elif meaning_1 not in definition and word.plus_case == '':
+                    definition.update({meaning_1: f'<b>{word.pali_clean}</b> {word.pos}. {meaning_data}'})
+                elif meaning_1 not in definition and word.plus_case != '':
+                    definition.update({meaning_1: f'<b>{word.pali_clean}</b> {word.pos}. {meaning_data} ({word.plus_case})'})
 
     with open(rsc['definition_css_path'], 'r', encoding=ENCODING) as f:
         definition_css = f.read()

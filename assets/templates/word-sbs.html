@@ -5,15 +5,15 @@
         '<a class="button_sbs" href="javascript:void(0);" onclick="button_click(this)"'
         ' data-target="{target}">{name}</a>')
 
-    examples = [i for i in [word.eg1, word.eg2, word.eg3, word.eg4] if i != '']
+    examples = [i for i in [word.sbs_example_1, word.sbs_example_2, word.sbs_example_3, word.sbs_example_4] if i != '']
 
     pos_string = ''
     if word.pos != '':
-        derived_entry = f'<i>from {word.derived}</i>' if word.derived else ''
-        pos_entries = [i for i in [word.pos, word.grammar, derived_entry, word.neg, word.verb, word.trans] if i != '']
+        derived_entry = f'<i>from {word.derived_from}</i>' if word.derived_from else ''
+        pos_entries = [i for i in [word.grammar, word.neg, word.verb, word.trans] if i != '']
         pos_string += ', '.join(pos_entries)
-        if word.case != '':
-            pos_string += f' ({word.case})'
+        if word.plus_case != '':
+            pos_string += f' ({word.plus_case})'
 
 %>
 
@@ -25,19 +25,21 @@ ${result}
 <body>
 <div class="content_sbs">
     <p>
-        % if word.ex != '':
-        <b>(cl.${word.ex}) | </b>
+        % if word.sbs_class_anki != '':
+        <b>(cl.${word.sbs_class_anki}) | </b>
         %endif
-        % if word.category != '':
+        % if word.sbs_category != '':
         <i>(s) | </i>
         %endif
         % if word.pos != '':
         ${word.pos}.
         % endif
         % if word.sbs_meaning != '':
-        <b>${word.meaning}; ${word.sbs_meaning}</b>
+        <b>${word.sbs_meaning}</b>
+        % elif word.meaning_1 == '' and word.meaning_2 != '':
+        <b>${word.meaning_2}${';' if word.sbs_meaning else ''} ${word.sbs_meaning}</b>
         % else:
-        <b>${word.meaning}</b>
+        <b>${word.meaning_1}</b>
         % endif
         % if word.meaning_lit != '':
         ; lit. ${word.meaning_lit}
@@ -46,19 +48,13 @@ ${result}
 </div>
 
 <div class="button-box">
-    % if word.meaning != '':
+    % if word.meaning_1 == '':
 ${button_template.format(target=f'grammar_sbs_{word.pali_}', name='grammar')}\
     % endif
     % if len(examples) == 1:
 ${button_template.format(target=f'example_sbs_{word.pali_}', name='example')}\
     % elif len(examples) > 1:
 ${button_template.format(target=f'example_sbs_{word.pali_}', name='examples')}\
-    % endif
-    % if word.pos in conjugations:
-${button_template.format(target=f'conjugation_sbs_{word.pali_}', name='conjugation')}\
-    % endif
-    % if word.pos in declensions:
-${button_template.format(target=f'declension_sbs_{word.pali_}', name='declensions')}\
     % endif
 ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
 </div>
@@ -72,7 +68,7 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
         </tr>
         % endif
 
-        <tr valign="top"><th>Meaning</th><td><b>${word.meaning}</b>
+        <tr valign="top"><th>Meaning</th><td><b>${word.meaning_2}</b>
         % if word.sbs_meaning != '':
         <b>; ${word.sbs_meaning}</b>
         % endif
@@ -81,46 +77,38 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
         % endif
         </td></tr>
 
-        % if word.russian != '':
-        <tr valign="top"><th>Russian</th><td><b>${word.russian}</b>
-        % if word.russian_lit != '':
-        <b>; досл. ${word.russian_lit}.</b>
-        % endif
-        </td></tr>
-        % endif
-
         % if word.root != '':
         <tr valign="top"><th>Root</th><td>${word.root}</td></tr>
         % endif
-        % if word.base != '':
-        <tr valign="top"><th>Base</th><td>${word.base}</td></tr>
+        % if word.root_base != '':
+        <tr valign="top"><th>Base</th><td>${word.root_base}</td></tr>
         % endif
         % if word.construction != '':
         <tr valign="top"><th>Construction</th><td>${word.construction}</td></tr>
         % endif
-        % if word.comp != '':
-        <tr valign="top"><th>Compound</th><td>${word.comp} (${word.comp_constr})</td></tr>
+        % if word.compound_type != '':
+        <tr valign="top"><th>Compound</th><td>${word.compound_type} (${word.compound_construction})</td></tr>
         % endif
         % if word.derivative != '':
         <tr valign="top"><th>Derivative</th><td>${word.derivative} (${word.suffix})</td></tr>
         % endif
-        % if word.pc != '':
-        <tr valign="top"><th>Phonetic</th><td>${word.pc}</td></tr>
+        % if word.phonetic != '':
+        <tr valign="top"><th>Phonetic</th><td>${word.phonetic}</td></tr>
         % endif
-        % if word.var != '':
-        <tr valign="top"><th>Variant</th><td>${word.var}</td></tr>
+        % if word.variant != '':
+        <tr valign="top"><th>Variant</th><td>${word.variant}</td></tr>
         % endif
-        % if word.comm != '':
-        <tr valign="top"><th>Commentary</th><td>${word.comm}</td></tr>
+        % if word.commentary != '':
+        <tr valign="top"><th>Commentary</th><td>${word.commentary}</td></tr>
         % endif
         % if word.notes != '':
         <tr valign="top"><th>Notes</th><td>${word.notes}</td></tr>
         % endif
-        % if word.sk != '':
-        <tr valign="top"><th>Sanskrit</th><td><i>${word.sk}</i></td></tr>
+        % if word.sanskrit != '':
+        <tr valign="top"><th>Sanskrit</th><td><i>${word.sanskrit}</i></td></tr>
         % endif
-        % if word.sk_root != '':
-        <tr valign="top"><th>Sk root</th><td><i>${word.sk_root}</i></td></tr>
+        % if word.sanskrit_root != '':
+        <tr valign="top"><th>Sk root</th><td><i>${word.sanskrit_root}</i></td></tr>
         % endif
     </table>
     <p>
@@ -129,48 +117,48 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
 </div>
 
 <div id="example_sbs_${word.pali_}" class="content_sbs hidden">
-    % if word.eg1 != '':
+    % if word.sbs_example_1 != '':
     <p>
-        ${word.eg1}<p class="sutta_sbs">${word.source1} ${word.sutta1}</p>
-        % if word.chapter1 != '':
+        ${word.sbs_example_1}<p class="sutta_sbs">${word.source_1} ${word.sutta_1}</p>
+        % if word.sbs_chapter_1 != '':
         <p class="sutta_sbs">
-            ${list_non_empty([word.chapter1, word.sbs_pali_chant1, word.sbs_eng_chant1])}
+            ${list_non_empty([word.sbs_chapter_1, word.sbs_chant_pali_1, word.sbs_chant_eng_1])}
         </p>
         % endif
     </p>
     % endif
-    % if word.eg2 != '':
+    % if word.sbs_example_2 != '':
     <p>
-        ${word.eg2}<p class="sutta_sbs">${word.source2} ${word.sutta2}</p>
-        % if word.chapter2 != '':
+        ${word.sbs_example_2}<p class="sutta_sbs">${word.source_2} ${word.sutta_2}</p>
+        % if word.sbs_chapter_2 != '':
         <p class="sutta_sbs">
-            ${list_non_empty([word.chapter2, word.sbs_pali_chant2, word.sbs_eng_chant2])}
+            ${list_non_empty([word.sbs_chapter_2, word.sbs_chant_pali_2, word.sbs_chant_eng_2])}
         </p>
         %endif
     </p>
     % endif
-    % if word.eg3 != '':
+    % if word.sbs_example_3 != '':
     <p>
-        ${word.eg3}
+        ${word.sbs_example_3}
         <p class="sutta_sbs">
-            ${word.source3} ${word.sutta3}
+            ${word.sbs_source_3} ${word.sbs_sutta_3}
         </p>
-        % if word.chapter3 != '':
+        % if word.sbs_chapter_3 != '':
         <p class="sutta_sbs">
-            ${list_non_empty([word.chapter3, word.sbs_pali_chant3, word.sbs_eng_chant3])}
+            ${list_non_empty([word.sbs_chapter_3, word.sbs_chant_pali_3, word.sbs_chant_eng_3])}
         </p>
         % endif
     </p>
     % endif
-    % if word.eg4 != '':
+    % if word.sbs_example_4 != '':
     <p>
-        ${word.eg4}
+        ${word.sbs_example_4}
         <p class="sutta_sbs">
-            ${word.source4} ${word.sutta4}
+            ${word.sbs_source_4} ${word.sbs_sutta_4}
         </p>
-        % if word.chapter4 != '':
+        % if word.sbs_chapter_4 != '':
         <p class="sutta_sbs">
-            ${list_non_empty([word.chapter4, word.sbs_pali_chant4, word.sbs_eng_chant4])}
+            ${list_non_empty([word.sbs_chapter_4, word.sbs_chant_pali_4, word.sbs_chant_eng_4])}
         </p>
         % endif
     </p>
@@ -181,21 +169,6 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
 ${google_link_sbs(entry=word.pali, text='Add it here', args=f'&entry.326955045=Example2')}.
     </p>
 </div>
-
-% if word.pos not in indeclinables:
-    % if word.pos in declensions:
-<div id="declension_sbs_${word.pali_}" class="content_sbs hidden">
-    % elif word.pos in conjugations:
-<div id="conjugation_sbs_${word.pali_}" class="content_sbs hidden">
-    % endif
-${table_data_read}
-    % if word.pos != 'sandhi' and word.pos != 'idiom' and (word.pos in declensions or word.pos in conjugations):
-    <p>
-        Have a suggestion? ${google_link_sbs(entry=word.pali, text='Report a mistake')}.
-    </p>
-    % endif
-</div>
-% endif
 
 <div id="feedback_sbs_${word.pali_}" class="content_sbs hidden">
   
