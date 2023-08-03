@@ -95,7 +95,7 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
         % endif
 
         % if word.root != "":
-        <tr valign="top"><th>корень</th><td>${word.root}</td></tr>
+        <tr valign="top"><th>корень</th><td>${word.root} ${word.root_group} ${word.root_sign} (${word.root_meaning})</td></tr>
         % endif
         % if word.root_base != "":
         <tr valign="top"><th>основа</th><td>${word.root_base}</td></tr>
@@ -125,7 +125,7 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
         <tr valign="top"><th>санскрит</th><td><i>${word.sanskrit}</i></td></tr>
         % endif
         % if word.sanskrit_root != "":
-        <tr valign="top"><th>санск. корень</th><td><i>${word.sanskrit_root}</i></td></tr>
+        <tr valign="top"><th>санск. корень</th><td><i>${word.sanskrit_root} ${word.sanskrit_root_class} (${word.sanskrit_root_meaning})</i></td></tr>
         % endif
     </table>
     <p>
