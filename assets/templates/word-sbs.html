@@ -119,7 +119,7 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
 <div id="example_sbs_${word.pali_}" class="content_sbs hidden">
     % if word.sbs_example_1 != '':
     <p>
-        ${word.sbs_example_1}<p class="sutta_sbs">${word.source_1} ${word.sutta_1}</p>
+        ${word.sbs_example_1}<p class="sutta_sbs">${word.sbs_source_1} ${word.sbs_sutta_1}</p>
         % if word.sbs_chapter_1 != '':
         <p class="sutta_sbs">
             ${list_non_empty([word.sbs_chapter_1, word.sbs_chant_pali_1, word.sbs_chant_eng_1])}
@@ -129,7 +129,7 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
     % endif
     % if word.sbs_example_2 != '':
     <p>
-        ${word.sbs_example_2}<p class="sutta_sbs">${word.source_2} ${word.sutta_2}</p>
+        ${word.sbs_example_2}<p class="sutta_sbs">${word.sbs_source_2} ${word.sbs_sutta_2}</p>
         % if word.sbs_chapter_2 != '':
         <p class="sutta_sbs">
             ${list_non_empty([word.sbs_chapter_2, word.sbs_chant_pali_2, word.sbs_chant_eng_2])}
