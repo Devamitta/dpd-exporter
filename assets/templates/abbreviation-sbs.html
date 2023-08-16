@@ -10,6 +10,13 @@
             %if abbreviation.example != '':
             <br>
             e.g. ${abbreviation.example}.
+            <br>
+            %endif
+            %if abbreviation.ru_abbrev != '':
+            <b>${abbreviation.ru_abbrev}</b>. 
+            %if abbreviation.ru_meaning != '':
+            ${abbreviation.ru_meaning}
+            %endif
             %endif
             <br>
             %if abbreviation.explanation != '':

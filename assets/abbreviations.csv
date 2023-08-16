@@ -12,7 +12,7 @@ abbrev	abbreviation		сокращённая форма			сокращ
 ABD	Abhidhāna Dictionary		Словарь Абхидхана		"<a class=""link"" href=""https://github.com/bksubhuti/Tipitaka-Pali-Projector"">inside TPP</a>"	
 ABHI	Abhidhamma Piṭaka		Абхидхамма Питака		The third basket of the Tipiṭaka; lit. the higher doctrine	
 abl	ablative case	pañcamī, apādanavacana, avadhi, apādāna	отделительный падеж	tato - pron, <b>abl</b> sg of ta	generally showing separation (from, away from)<br>(e.g. from that)	отд
-abs	absolutive verb	avyaya, pubbakicca	деепричастие	upasaṅkamitvā; katvā	A verb, often a combination of having + pp, expressing completed action (e.g. having approached; having made)	деепр
+abs	absolutive verb	avyaya, pubbakicca	деепричастие несовершенного вида	upasaṅkamitvā; katvā	A verb, often a combination of having + pp, expressing completed action (e.g. having approached; having made)	деепр.несов
 abstr	abstract noun		абстрактное существительное	abyāpāda - masc <b>abstr</b>	A concept or idea not associated with any specific instance or any concrete thing (e.g. friendliness)	абстр
 acc	accusative case	dutiyā, upayogavacana, kammavacana	винительный падеж	maṃ - pron, 1st <b>acc</b> sg	the object of the sentence (e.g. me)	вин
 act	action noun		существительное действие	pahāna - nt <b>act</b>	Noun describing a process (e.g) abandoning	действие
@@ -27,7 +27,7 @@ indicative mood expresses past action. (e.g. was; sat down; arose)"	аор
 APA	Therāpadāna		Тхерападана		Book 10 of the Khuddaka Nikāya; Legends of the Elder Monks	
 API	Therīapadāna		Тхериападана		Book 11 of the Khuddaka Nikāya; Legends of the Elder Nuns	
 APP	Abhidhānappadīpikāpāṭha		Абхидха̄наппадӣпика̄па̄т̣ха			
-app	active past participle		причастие прошедшего времени действительного залога	bhuttāvī; dassāvī	e.g. who has eaten; who has seen	прич. действ
+app	active past participle		причастие прошедшего времени действительного залога	bhuttāvī; dassāvī	e.g. who has eaten; who has seen	прич.прош.действ
 APT	Abhidhānappadīpikāṭīkā		Абхидха̄наппадӣпика̄т̣ӣка̄			
 base	pronominal base	liṅga	основа местоимения	ta; ima; ya; kaci	e.g. that, this, which, someone	основа
 BD	Concise Pali English Dictionary (by Ven. Buddhadatta)		Краткий Словарь Пали-Англ. (Досл. Буддхадатта)		"<a class=""link"" href=""http://www.ahandfulofleaves.org/documents/concise%20pali%20english%20dictionary_buddhadatta.pdf"">web-link</a>"	
@@ -70,13 +70,13 @@ fem	feminine noun	itthī; itthiliṅga	женский род	āpatti; vedanā; b
 fut	future tense	bhavissantī; anāgatakāla	будущее время	bhavissati; gamissati; assasissati	A verb tense that expresses actions or states in the future	буд
 gen	genitive case	chaṭṭhī, sāmivacana, sambandha	родительный падеж	me - pron, 1st <b>gen</b> sg of ahaṃ	showing possession (of 's)<br>(e.g. my, mine)	род
 gen abs	genitive absolute construction		родительный падеж абсолютная конструкция	me sato; tassa jānato passato	When a noun or a pronoun in the genitive case is used with a participle in the same case as itself, the construction is called genitive absolute. It can be translated as when, while, since, or as. Sometimes it also has the meaning of since, although, even if, despite, in spite of, notwithstanding.	род.абс
-ger	gerund	avyaya; bhāvapada	герундий	upasampajja; pahāya; ādāya	A verb (or verbal adjective), often ending in -ing, expressing ongoing action (eg. doing; making; going).	гер
+ger	gerund	avyaya; bhāvapada	деепричастие совершенного вида	upasampajja; pahāya; ādāya	A verb (or verbal adjective), often ending in -ing, expressing ongoing action (eg. doing; making; going).	деепр.сов
 gram	grammatical term, technical term		грамматический термин	padasandhi		грам
 idiom	idiomatic expression	bhāsārītyanugata	идиома; фразеологизм	app'eva nāma	A manner of speaking that is natural to native speakers of a language or an expression whose meanings cannot be inferred from the meanings of the words that make it up	идиом
 imp	imperative mood	pañcamī; idānaṃ	повелительное наклонение	gaccha; atthu; hotu	Mood that expresses an intention to influence the listener's behavior or expresses wish. (e.g. begone! may there be! may it be!)	повелит
 imperf	imperfect past tense	hiyyattanī; hīyattanī	имперфектное прошедшее время	addasā; ahuvā; accagamā	Past tense which is used for events which happened before yesterday, but were seen by the speaker.	имперф
 impers	impersonal	bhāva	безличный глагол	paṭibhāti; kappati	Not relating to or responsive to individual persons (e.g. it occurs (to); it is suitable (for))	безличн
-in comps	in compounds		в составе сложных слов	anupassī; paṭisaṃvedī	Usually acts as part of a compound	в составе
+in comps	in compounds		в составе сложных слов	anupassī; paṭisaṃvedī	Usually acts as part of a compound	всоставе
 ind	indeclinable word	nipāta; avyaya	несклоняемое слово	api; pana; atha	It does not have declensions or conjugations.	несклон
 inf	infinitive verb	tumanta; avyaya	инфинитив, неопределённая форма глагола	kātuṃ; pahātuṃ; carituṃ	The uninflected form of the verb. It most commonly expresses a purpose.	неопр
 instr	instrumental case	tatiyā, karaṇavacana	творительный, инструментальный падеж	mayā - pron 1st <b>instr</b> sg of ahaṃ	shows the object or person with or by whom something is performed. (by, with or through)<br>(e.g. by me, with me)	твор
@@ -123,7 +123,7 @@ Perniola	Pali Grammar by V.Perniola		Грамматика Пали, В. Перн
 pl	plural number	bahuvacana	множественное число	tumhe - pron, 2nd nom <b>pl</b> of tvaṃ	The form of a word that is used to denote more than one	мн
 PM	Paṭisambhidā Magga		Пат̣исамбхида̄ Магга		Book 18 of the Khuddaka Nikāya; Path to Analytical Knowledge	
 pos	part of speech	pada	часть речи		One of the traditional categories of words intended to reflect their functions in a grammatical context	
-pp	past participle	krudanta	причастие прошедшего времени	vutta; nisinna; suta	Verbal adjective which describes the action that a noun did (in the past) (e.g. have said; have seated; have heard)	прич.прош
+pp	past participle	krudanta	причастие прошедшего времени страдательного залога	vutta; nisinna; suta	Verbal adjective which describes the action that a noun did (in the past) (e.g. have said; have seated; have heard)	прич.прош.страд
 PPa	Puggalapaññatti Aṭṭhakathā		Комментарий к Пат̣исамбхида̄ Магга		Commentary to Puggalapaññatti	
 pr	present tense	vattamānā; vattamānakāla	настоящее время	viharati; uppajjati; passati	A verb tense that expresses actions or states at the time of speaking (e.g. lives; appears; sees)	наст
 prefix	prefix	upasagga	приставка, префикс	ā-; abhi-; nī-	An affix that is added in front of the word	прист
