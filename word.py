@@ -37,6 +37,12 @@ class DpsRuWord:
         self.meaning_1: str = df.loc[row, 'meaning_1']
         self.meaning_2: str = df.loc[row, 'meaning_2']
         self.meaning_lit: str = df.loc[row, 'meaning_lit']
+
+        if self.meaning_lit and not self.meaning_1:
+            lit_index = self.meaning_2.find("; lit.")
+            if lit_index != -1:
+                self.meaning_2 = self.meaning_2[:lit_index]
+        
         self.ru_meaning: str = df.loc[row, 'ru_meaning']
         self.ru_meaning_lit: str = df.loc[row, 'ru_meaning_lit']
         self.sbs_meaning: str = df.loc[row, 'sbs_meaning']
@@ -132,9 +138,11 @@ class AbbreviationEntry:
         self.meaning = series.iloc[1]
         self.en_meaning = series.iloc[1]
         self.pali_meaning = series.iloc[2]
+        self.ru_meaning = series.iloc[3]
         ru_meaning = series.iloc[3]
         self.example = series.iloc[4]
         self.explanation = series.iloc[5]
+        self.ru_abbrev = series.iloc[6]
         ru_abbrev = series.iloc[6]
 
         if kind == Kind.DPSRU:
