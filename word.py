@@ -13,7 +13,7 @@ from helpers import ResourcePaths
 from helpers import get_resource_paths_dps_ru
 
 import sys
-sys.path.append("/home/deva/Documents/dpd-db")
+sys.path.append("/home/deva/Documents/dpd-db") # https://github.com/digitalpalidictionary/dpd-db
 
 from tools.link_generator import generate_link
 
