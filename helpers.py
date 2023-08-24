@@ -120,7 +120,7 @@ def get_resource_paths_dps_ru() -> ResourcePaths:
         abbreviation_template_path=Path('./assets/templates/abbreviation-dps-ru.html'),
         inflections_dir=dps_dir.joinpath('inflection/'),
         inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_dps/',
-        words_path=dps_dir.joinpath('spreadsheets/dps-full.csv'),
+        words_path=dps_dir.joinpath('../dpd-db/dps/csvs/dps_full.csv'),
         icon_path=Path('./logo/book.bmp'),
         word_template_path=Path('./assets/templates/word-dps-ru.html'),
     )
@@ -163,7 +163,7 @@ def get_resource_paths_sbs() -> ResourcePaths:
         # Project input
         inflections_dir=dps_dir.joinpath('inflection-en/'),
         inflections_html_tables_dir=dps_dir/'inflection-en/output/html tables/',
-        words_path=dps_dir.joinpath('spreadsheets/sbs-pd.csv'),
+        words_path=dps_dir.joinpath('../dpd-db/dps/csvs/sbs_pd.csv'),
         icon_path=Path('./logo/head_brown.bmp'),
         abbreviation_template_path=Path('./assets/templates/abbreviation-sbs.html'),
         word_template_path=Path('./assets/templates/word-sbs.html'),
@@ -171,9 +171,9 @@ def get_resource_paths_sbs() -> ResourcePaths:
 
     # ensure write dirs exist
     for d in [rsc['output_dir'],
-              rsc['output_html_dir'],
-              rsc['output_share_dir'],
-              rsc['error_log_dir']]:
+            rsc['output_html_dir'],
+            rsc['output_share_dir'],
+            rsc['error_log_dir']]:
         d.mkdir(parents=True, exist_ok=True)
 
     return rsc
