@@ -12,7 +12,14 @@ from helpers import ENCODING
 from helpers import ResourcePaths
 from helpers import get_resource_paths_dps_ru
 
+import sys
+sys.path.append("/home/deva/Documents/dpd-db")
+
+from tools.link_generator import generate_link
+
+
 _LOGGER = logging.getLogger(__name__)
+
 
 class DpsRuWord:
     abbreviations_ru = None
@@ -113,6 +120,24 @@ class DpsRuWord:
         self.id: str = df.loc[row, 'id']
         self.sbs_category: str = df.loc[row, 'sbs_category']
         self.sbs_class_anki: str = df.loc[row, 'sbs_class_anki']
+
+        self.sbs_link_1: str = df.loc[row, 'sbs_link_1']
+        self.sbs_link_2: str = df.loc[row, 'sbs_link_2']
+        self.sbs_link_3: str = df.loc[row, 'sbs_link_3']
+        self.sbs_link_4: str = df.loc[row, 'sbs_link_4']
+
+        self.class_link: str = df.loc[row, 'class_link']
+        self.sutta_link: str = df.loc[row, 'sutta_link']
+
+        self.source_link_1: str = generate_link(self.source_1) if self.source_1 else ""
+        self.source_link_2: str = generate_link(self.source_2) if self.source_2 else ""
+
+        self.sbs_source_link_1: str = generate_link(self.sbs_source_1) if self.sbs_source_1 else ""
+        self.sbs_source_link_2: str = generate_link(self.sbs_source_2) if self.sbs_source_2 else ""
+        self.sbs_source_link_3: str = generate_link(self.sbs_source_3) if self.sbs_source_3 else ""
+        self.sbs_source_link_4: str = generate_link(self.sbs_source_4) if self.sbs_source_4 else ""
+
+    
 
     def translate_abbreviations(self) -> None:
         # TODO Cache

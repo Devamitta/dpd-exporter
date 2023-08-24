@@ -135,10 +135,22 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
 
 <div id="example_dps_ru_${word.pali_}" class="content_dps_ru hidden">
     % if word.example_1 != '':
-    <p>${word.example_1}<p class="sutta_dps_ru">${word.source_1} ${word.sutta_1}</p></p>
+    <p>${word.example_1}<p class="sutta_dps_ru">
+    % if word.source_link_1 != '':
+        <a href="${word.source_link_1}">${word.source_1} </a>
+        % else:
+        ${word.source_1} 
+    % endif
+        ${word.sutta_1}</p></p>
     % endif
     % if word.example_2 != '':
-    <p>${word.example_2}<p class="sutta_dps_ru">${word.source_2} ${word.sutta_2}</p></p>
+    <p>${word.example_2}<p class="sutta_dps_ru">
+    % if word.source_link_2 != '':
+        <a href="${word.source_link_2}">${word.source_2} </a>
+        % else:
+        ${word.source_2} 
+    % endif
+        ${word.sutta_2}</p></p>
     % endif
     <p>
     Пожалуйста, подскажите более подходящий ${google_link_dps_ru(entry=word.pali, text='пример', args=['&entry.326955045=Пример2'])}.

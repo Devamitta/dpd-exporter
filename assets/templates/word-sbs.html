@@ -26,10 +26,10 @@ ${result}
 <div class="content_sbs">
     <p>
         % if word.sbs_class_anki != '':
-        <b>(cl.${word.sbs_class_anki}) | </b>
+        <a href="${word.class_link}"><b><i>(cl.${word.sbs_class_anki})</b></i></a> | 
         %endif
         % if word.sbs_category != '':
-        <i>(s) | </i>
+        <a href="${word.sutta_link}"><b><i>(${word.sbs_category})</i></b></a> | 
         %endif
         % if word.pos != '':
         ${word.pos}.
@@ -119,20 +119,39 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
 <div id="example_sbs_${word.pali_}" class="content_sbs hidden">
     % if word.sbs_example_1 != '':
     <p>
-        ${word.sbs_example_1}<p class="sutta_sbs">${word.sbs_source_1} ${word.sbs_sutta_1}</p>
+        ${word.sbs_example_1}
+        <p class="sutta_sbs">
+            % if word.sbs_source_link_1 != '':
+                <a href="${word.sbs_source_link_1}">${word.sbs_source_1} </a>
+            % else:
+                ${word.sbs_source_1} 
+            % endif
+            ${word.sbs_sutta_1}</p>
         % if word.sbs_chapter_1 != '':
         <p class="sutta_sbs">
-            ${list_non_empty([word.sbs_chapter_1, word.sbs_chant_pali_1, word.sbs_chant_eng_1])}
+            ${list_non_empty([word.sbs_chapter_1])}
+            <a href="${word.sbs_link_1}">${word.sbs_chant_pali_1}</a>
+            ${list_non_empty([word.sbs_chant_eng_1])}
         </p>
         % endif
     </p>
     % endif
+    
     % if word.sbs_example_2 != '':
     <p>
-        ${word.sbs_example_2}<p class="sutta_sbs">${word.sbs_source_2} ${word.sbs_sutta_2}</p>
+        ${word.sbs_example_2}
+        <p class="sutta_sbs">
+            % if word.sbs_source_link_2 != '':
+                <a href="${word.sbs_source_link_2}">${word.sbs_source_2} </a>
+            % else:
+                ${word.sbs_source_link_2} 
+            % endif
+            ${word.sbs_sutta_2}</p>
         % if word.sbs_chapter_2 != '':
         <p class="sutta_sbs">
-            ${list_non_empty([word.sbs_chapter_2, word.sbs_chant_pali_2, word.sbs_chant_eng_2])}
+            ${list_non_empty([word.sbs_chapter_2])}
+            <a href="${word.sbs_link_2}">${word.sbs_chant_pali_2}</a>
+            ${list_non_empty([word.sbs_chant_eng_2])}
         </p>
         %endif
     </p>
@@ -141,11 +160,18 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
     <p>
         ${word.sbs_example_3}
         <p class="sutta_sbs">
-            ${word.sbs_source_3} ${word.sbs_sutta_3}
+        % if word.sbs_source_link_3 != '':
+            <a href="${word.sbs_source_link_3}">${word.sbs_source_3} </a>
+        % else:
+            ${word.sbs_source_3} 
+        % endif
+            ${word.sbs_sutta_3}
         </p>
         % if word.sbs_chapter_3 != '':
         <p class="sutta_sbs">
-            ${list_non_empty([word.sbs_chapter_3, word.sbs_chant_pali_3, word.sbs_chant_eng_3])}
+            ${list_non_empty([word.sbs_chapter_3])}
+            <a href="${word.sbs_link_3}">${word.sbs_chant_pali_3}</a>
+            ${list_non_empty([word.sbs_chant_eng_3])}
         </p>
         % endif
     </p>
@@ -154,11 +180,18 @@ ${button_template.format(target=f'feedback_sbs_{word.pali_}', name='feedback')}
     <p>
         ${word.sbs_example_4}
         <p class="sutta_sbs">
-            ${word.sbs_source_4} ${word.sbs_sutta_4}
+        % if word.sbs_source_link_4 != '':
+            <a href="${word.sbs_source_link_4}">${word.sbs_source_4} </a>
+        % else:
+            ${word.sbs_source_4} 
+        % endif
+            ${word.sbs_sutta_4}
         </p>
         % if word.sbs_chapter_4 != '':
         <p class="sutta_sbs">
-            ${list_non_empty([word.sbs_chapter_4, word.sbs_chant_pali_4, word.sbs_chant_eng_4])}
+            ${list_non_empty([word.sbs_chapter_4])}
+            <a href="${word.sbs_link_4}">${word.sbs_chant_pali_4}</a>
+            ${list_non_empty([word.sbs_chant_eng_4])}
         </p>
         % endif
     </p>
