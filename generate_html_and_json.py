@@ -125,14 +125,14 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
     for row in range(df_length):
         word = DpsRuWord(df, row)
 
-        if rsc['kind'] is Kind.DPSRU:
+        if rsc['kind'] is Kind.DPSRU or rsc['kind'] is Kind.DPSFULL:
             word.translate_abbreviations()
 
         if row % 5000 == 0 or row % df_length == 0:
             rich.print(f'{timeis()} {row}/{df_length}\t{word.pali}')
 
         html_string = ''
-        if kind is Kind.DPSRU:
+        if kind is Kind.DPSRU or kind is Kind.DPSFULL:
             text_full = _full_text_dps_ru_entry(word=word)
         elif kind is Kind.SBS:
             text_full = _full_text_sbs_entry(word=word)
@@ -143,7 +143,7 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
         html_string += header_template.render(css=words_css, js=buttons_js)
 
         # summary
-        if kind is Kind.DPSRU:
+        if kind is Kind.DPSRU or kind is Kind.DPSFULL:
             if word.ru_meaning == '':
                 text_concise += f'{word.pali}. {word.pos}. {word.meaning_1}.'
             else:
@@ -319,7 +319,7 @@ def _generate_help_html(data: DataFrames, rsc: ResourcePaths) -> List[List[str]]
         html_string += "<body>"
 
         # summary
-        if rsc['kind'] is Kind.DPSRU:
+        if rsc['kind'] is Kind.DPSRU or rsc['kind'] is Kind.DPSFULL:
             html_string += f'<div class="help"><p>помощь. <b>{help_title}</b>. {meaning}</p></div>'
         else:
             html_string += f'<div class="help"><p>help. <b>{help_title}</b>. {meaning}</p></div>'
@@ -349,11 +349,11 @@ def _generate_definition_html(data: DataFrames, rsc: ResourcePaths) -> List[List
     for row in range(df_length):
         word = DpsRuWord(df, row)
 
-        if rsc['kind'] is Kind.DPSRU:
+        if rsc['kind'] is Kind.DPSRU or rsc['kind'] is Kind.DPSFULL:
             word.translate_abbreviations()
 
         meanings_list = []
-        meaning_data = word.ru_meaning if kind is Kind.DPSRU else (word.meaning_1 if word.meaning_1 else word.meaning_2)
+        meaning_data = word.ru_meaning if kind is Kind.DPSRU or kind is Kind.DPSFULL else (word.meaning_1 if word.meaning_1 else word.meaning_2)
 
         meaning_data = re.sub(r'\?\?', '', meaning_data)
 
@@ -388,7 +388,7 @@ def _generate_definition_html(data: DataFrames, rsc: ResourcePaths) -> List[List
 
     definition_data_list = []
 
-    div_class = 'rpd' if kind is Kind.DPSRU else 'epd_sbs'
+    div_class = 'rpd' if kind is Kind.DPSRU or kind is Kind.DPSFULL else 'epd_sbs'
     for key, value in definition.items():
         html_string = ''
         html_string = definition_css

@@ -15,6 +15,7 @@ from helpers import ResourcePaths
 from helpers import copy_goldendict
 from helpers import get_resource_paths_dps_ru
 from helpers import get_resource_paths_sbs
+from helpers import get_resource_paths_dps_full
 from helpers import timeis, line  # TODO Use logging with the rich.logging.RichHandler for messages
 
 
@@ -27,6 +28,14 @@ RSC = get_resource_paths_dps_ru()
 @app.command()
 def run_generate_html_and_json(generate_roots: bool = True):
     rsc = get_resource_paths_dps_ru()
+    generate_html_and_json(
+        rsc=rsc,
+        generate_roots=generate_roots)
+
+
+@app.command()
+def run_generate_html_and_json_dps_full(generate_roots: bool = True):
+    rsc = get_resource_paths_dps_full()
     generate_html_and_json(
         rsc=rsc,
         generate_roots=generate_roots)
@@ -68,9 +77,12 @@ def _run_generate_goldendict(rsc: ResourcePaths, ifo: 'StarDictIfo', move_to_des
 
     rich.print(f"{timeis()} [green]writing goldendict")
     export_words_as_stardict_zip(words, ifo, rsc['output_stardict_zip_path'], rsc['icon_path'])
+    print(f"saved into {rsc['output_stardict_zip_path']}")
 
     if move_to_dest:
         copy_goldendict(rsc['output_stardict_zip_path'], rsc['output_share_dir'])
+        print(f"moved into {rsc['output_share_dir']}")
+
 
     rich.print(f"{timeis()} {line()}")
 
@@ -86,6 +98,22 @@ def run_generate_goldendict(move_to_dest: bool = True):
             "author": "Бхиккху Дэвамитта",
             "description": "Пали Словарь",
             "website": "devamitta.github.io/pali/",
+    })
+
+    return _run_generate_goldendict(rsc, ifo, move_to_dest)
+
+
+@app.command()
+def run_generate_goldendict_dps_full(move_to_dest: bool = True):
+    from stardict_nu import ifo_from_opts, StarDictIfo
+
+    rsc = get_resource_paths_dps_full()
+
+    ifo = ifo_from_opts({
+            "bookname": "Пали Словарь",
+            "author": "Anonimus",
+            "description": "Test",
+            "website": "",
     })
 
     return _run_generate_goldendict(rsc, ifo, move_to_dest)

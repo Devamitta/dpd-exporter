@@ -41,6 +41,7 @@ class Kind(enum.Enum):
     """
     SBS = enum.auto()
     DPSRU = enum.auto()
+    DPSFULL = enum.auto()
 
 
 class DataFrames(TypedDict):
@@ -135,6 +136,50 @@ def get_resource_paths_dps_ru() -> ResourcePaths:
     return rsc
 
 
+def get_resource_paths_dps_full() -> ResourcePaths:
+    s = os.getenv('DPS_DIR')
+    if s is None:
+        rich.print(f"{timeis()} [red]ERROR! DPS_DIR is not set.")
+        sys.exit(2)
+    else:
+        dps_dir = Path(s)
+
+    rsc = ResourcePaths(
+        kind=Kind.DPSFULL,
+        # Project output
+        output_dir=Path('./output/'),
+        output_html_dir=Path('./output/html/'),
+        output_help_html_dir=Path('./output/help html/'),
+        output_share_dir=Path('./share/'),
+        gd_json_path=Path('./output/gd.json'),
+        output_stardict_zip_path=Path('ru-pali-dictionary-full.zip'),
+        error_log_dir=Path('./errorlogs/'),
+        # Project assets
+        dict_words_css_path=Path('./assets/words-dps-ru.css'),
+        dict_help_css_path=Path('./assets/help.css'),
+        definition_css_path=Path('./assets/rpd.css'),
+        buttons_js_path=Path('./assets/buttons-dps-ru.js'),
+        abbrev_path=Path('./assets/abbreviations.csv'),
+        help_path=Path('./assets/help.csv'),
+        # Project input
+        abbreviation_template_path=Path('./assets/templates/abbreviation-dps-ru.html'),
+        inflections_dir=dps_dir.joinpath('inflection/'),
+        inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_dps/',
+        words_path=dps_dir.joinpath('../dpd-db/dps/csvs/dpd_dps_full.csv'),
+        icon_path=Path('./logo/book.bmp'),
+        word_template_path=Path('./assets/templates/word-dps-ru.html'),
+    )
+
+    # ensure write dirs exist
+    for d in [rsc['output_dir'],
+              rsc['output_html_dir'],
+              rsc['output_share_dir'],
+              rsc['error_log_dir']]:
+        d.mkdir(parents=True, exist_ok=True)
+
+    return rsc
+
+
 def get_resource_paths_sbs() -> ResourcePaths:
     s = os.getenv('DPS_DIR')
     if s is None:
@@ -161,8 +206,8 @@ def get_resource_paths_sbs() -> ResourcePaths:
         abbrev_path=Path('./assets/abbreviations.csv'),
         help_path=Path('./assets/help.csv'),
         # Project input
-        inflections_dir=dps_dir.joinpath('inflection-en/'),
-        inflections_html_tables_dir=dps_dir/'inflection-en/output/html tables/',
+        inflections_dir=dps_dir.joinpath('inflection/'),
+        inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_sbs',
         words_path=dps_dir.joinpath('../dpd-db/dps/csvs/sbs_pd.csv'),
         icon_path=Path('./logo/head_brown.bmp'),
         abbreviation_template_path=Path('./assets/templates/abbreviation-sbs.html'),

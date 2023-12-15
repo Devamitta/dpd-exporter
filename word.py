@@ -170,7 +170,7 @@ class AbbreviationEntry:
         self.ru_abbrev = series.iloc[6]
         ru_abbrev = series.iloc[6]
 
-        if kind == Kind.DPSRU:
+        if kind == Kind.DPSRU or kind == Kind.DPSFULL:
             if ru_abbrev:
                 self.abbrev = ru_abbrev
 

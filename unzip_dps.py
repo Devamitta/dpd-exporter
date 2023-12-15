@@ -32,3 +32,7 @@ print("\033[32m ru-pali-dict.zip has been unpacked to the GoldenDict folder \033
 # Removing all files starting with ru-pali-dictionary.zip. from the same directory
 for f in glob.glob("share/ru-pali-dictionary.zip.*"):
    os.remove(f)
+
+# Removing all files starting with ru-pali-dictionary-full.zip. from the same directory
+for f in glob.glob("share/ru-pali-dictionary-full.zip.*"):
+   os.remove(f)
