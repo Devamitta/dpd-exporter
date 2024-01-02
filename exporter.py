@@ -110,9 +110,9 @@ def run_generate_goldendict_dps_full(move_to_dest: bool = True):
     rsc = get_resource_paths_dps_full()
 
     ifo = ifo_from_opts({
-            "bookname": "Пали Словарь",
-            "author": "Anonimus",
-            "description": "Test",
+            "bookname": "DPS",
+            "author": "Devamitta",
+            "description": "work in progress",
             "website": "",
     })
 

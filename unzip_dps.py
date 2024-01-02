@@ -26,6 +26,10 @@ with ZipFile('share/ru-pali-dictionary.zip', 'r') as zipObj:
    # Extract all the contents of zip file in current directory
    zipObj.extractall('../../GoldenDict')
 
+with ZipFile('share/ru-pali-dictionary-full.zip', 'r') as zipObj:
+   # Extract all the contents of zip file in current directory
+   zipObj.extractall('../../GoldenDict')
+
 # Print completion message in green color
 print("\033[32m ru-pali-dict.zip has been unpacked to the GoldenDict folder \033[0m")
 

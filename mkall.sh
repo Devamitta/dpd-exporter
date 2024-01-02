@@ -2,9 +2,13 @@
 
 # export sbs-pd and ru to dictionary format from csv and write all output into .mkall-errors.txt
 
-exec > >(tee "/home/deva/logs/mkall.log") 2>&1
+# exec > >(tee "/home/deva/logs/mkall.log") 2>&1
 
-cp "/home/deva/Documents/dpd-db/dps/csvs/dpd_dps_full.csv" "/home/deva/Documents/dps/spreadsheets/dpd_dps_full.csv"
+# cd "/home/deva/Documents/dpd-db"
+
+# poetry run python dps/scripts/dps_csv.py
+
+# cp "/home/deva/Documents/dpd-db/dps/csvs/dpd_dps_full.csv" "/home/deva/Documents/dps/spreadsheets/dpd_dps_full.csv"
 
 cp "/home/deva/Documents/dpd-db/dps/csvs/dps_full.csv" "/home/deva/Documents/dps/spreadsheets/dps_full.csv"
 
@@ -26,8 +30,8 @@ cd "../exporter"
 
 poetry run python exporter.py run-generate-html-and-json
 poetry run python exporter.py run-generate-goldendict
-# poetry run python exporter.py run-generate-html-and-json-dps-full
-# poetry run python exporter.py run-generate-goldendict-dps-full
+poetry run python exporter.py run-generate-html-and-json-dps-full
+poetry run python exporter.py run-generate-goldendict-dps-full
 poetry run python exporter.py run-generate-html-and-json-sbs
 poetry run python exporter.py run-generate-goldendict-sbs
 

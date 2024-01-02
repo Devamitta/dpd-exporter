@@ -6,10 +6,10 @@
         'Участие&body=Пожалуйста, дайте мне знать, как я могу принять участие в развитии Словаря.')
 
     button_template = (
-        '<a class="button_dps_ru" href="javascript:void(0);" onclick="button_click(this)"'
+        '<a class="button_dps_full" href="javascript:void(0);" onclick="button_click(this)"'
         ' data-target="{target}">{name}</a>')
 
-    examples = [i for i in [word.example_1, word.example_2] if i != '']
+    examples = [i for i in [word.sbs_example_1, word.sbs_example_2, word.sbs_example_3, word.sbs_example_4] if i != '']
 
     pos_string = ''
     if word.pos != '':
@@ -22,17 +22,18 @@
 
 <body>
 % if not word.ru_meaning:
-<div class="content_dps_ru">
+<div class="content_dps_full">
     <p>
         % if word.meaning_1 != '':
         ${word.pos}. <b>${word.meaning_1}</b> [в процессе]
         % else:
         ${word.pos}. <b>${word.meaning_2}</b> [в процессе]
         % endif
+        <span class="gray">${word.id}</span>
     </p>
 </div>
 % else:
-<div class="content_dps_ru">
+<div class="content_dps_full">
     <p>
         % if word.pos:
         ${word.pos}.
@@ -41,6 +42,7 @@
         % if word.ru_meaning_lit != '':
         <b>; досл. ${word.ru_meaning_lit}</b>
         % endif
+        <span class="gray">${word.id}</span>
     </p>
 </div>
 % endif
@@ -48,24 +50,24 @@
 
 <div class="button-box">
     % if word.ru_meaning != '':
-${button_template.format(target=f'grammar_dps_ru_{word.pali_}', name='грамматика')}\
+${button_template.format(target=f'grammar_dps_full_{word.pali_}', name='грамматика')}\
     % endif
     % if len(examples) == 1:
-${button_template.format(target=f'example_dps_ru_{word.pali_}', name="пример")}\
+${button_template.format(target=f'example_dps_full_{word.pali_}', name="пример")}\
     % elif len(examples) > 1:
-${button_template.format(target=f'example_dps_ru_{word.pali_}', name='примеры')}\
+${button_template.format(target=f'example_dps_full_{word.pali_}', name='примеры')}\
     % endif
     % if word.pos_orig in conjugations:
-${button_template.format(target=f'conjugation_dps_ru_{word.pali_}', name='спряжения')}\
+${button_template.format(target=f'conjugation_dps_full_{word.pali_}', name='спряжения')}\
     % endif
     % if word.pos_orig in declensions:
-${button_template.format(target=f'declension_dps_ru_{word.pali_}', name='склонения')}\
+${button_template.format(target=f'declension_dps_full_{word.pali_}', name='склонения')}\
     % endif
-${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о словаре')}
+${button_template.format(target=f'feedback_dps_full_{word.pali_}', name='о словаре')}
 </div>
 
-<div id="grammar_dps_ru_${word.pali_}" class="content_dps_ru hidden">
-    <table class = "table1_dps_ru">
+<div id="grammar_dps_full_${word.pali_}" class="content_dps_full hidden">
+    <table class = "table1_dps_full">
         % if word.pos != '':
         <tr>
             <th>часть речи</th>
@@ -133,35 +135,66 @@ ${button_template.format(target=f'feedback_dps_ru_{word.pali_}', name='о сло
     </p>
 </div>
 
-<div id="example_dps_ru_${word.pali_}" class="content_dps_ru hidden">
-    % if word.example_1 != '':
-    <p>${word.example_1}<p class="sutta_dps_ru">
-    % if word.source_link_1 != '':
-        <a href="${word.source_link_1}">${word.source_1}</a> 
-        % else:
-        ${word.source_1} 
-    % endif
-        ${word.sutta_1}</p></p>
-    % endif
-    % if word.example_2 != '':
-    <p>${word.example_2}<p class="sutta_dps_ru">
-    % if word.source_link_2 != '':
-        <a href="${word.source_link_2}">${word.source_2}</a> 
-        % else:
-        ${word.source_2} 
-    % endif
-        ${word.sutta_2}</p></p>
-    % endif
+<div id="example_dps_full_${word.pali_}" class="content_dps_full hidden">
+    % if word.sbs_example_1 != '':
     <p>
+        ${word.sbs_example_1}
+        <p class="sutta_dps_full">
+            % if word.sbs_source_link_1 != '':
+                <a href="${word.sbs_source_link_1}">${word.sbs_source_1}</a> 
+            % else:
+                ${word.sbs_source_1} 
+            % endif
+            ${word.sbs_sutta_1}</p>
+    </p>
+    % endif
+    % if word.sbs_example_2 != '':
+    <p>
+        ${word.sbs_example_2}
+        <p class="sutta_dps_full">
+            % if word.sbs_source_link_2 != '':
+                <a href="${word.sbs_source_link_2}">${word.sbs_source_2}</a> 
+            % else:
+                ${word.sbs_source_2} 
+            % endif
+            ${word.sbs_sutta_2}</p>
+    </p>
+    % endif
+    % if word.sbs_example_3 != '':
+    <p>
+        ${word.sbs_example_3}
+        <p class="sutta_dps_full">
+        % if word.sbs_source_link_3 != '':
+            <a href="${word.sbs_source_link_3}">${word.sbs_source_3}</a> 
+        % else:
+            ${word.sbs_source_3} 
+        % endif
+            ${word.sbs_sutta_3}
+        </p>
+    </p>
+    % endif
+    % if word.sbs_example_4 != '':
+    <p>
+        ${word.sbs_example_4}
+        <p class="sutta_dps_full">
+        % if word.sbs_source_link_4 != '':
+            <a href="${word.sbs_source_link_4}">${word.sbs_source_4}</a> 
+        % else:
+            ${word.sbs_source_4} 
+        % endif
+            ${word.sbs_sutta_4}
+        </p>
+    </p>
+    % endif
     Пожалуйста, подскажите более подходящий ${google_link_dps_ru(entry=word.pali, text='пример', args=['&entry.326955045=Пример2'])}.
     </p>
 </div>
 
 % if word.pos_orig not in indeclinables:
     % if word.pos_orig in declensions:
-<div id="declension_dps_ru_${word.pali_}" class="content_dps_ru hidden">
+<div id="declension_dps_full_${word.pali_}" class="content_dps_full hidden">
     % elif word.pos_orig in conjugations:
-<div id="conjugation_dps_ru_${word.pali_}" class="content_dps_ru hidden">
+<div id="conjugation_dps_full_${word.pali_}" class="content_dps_full hidden">
     % endif
 ${table_data_read}
     % if word.pos_orig != 'sandhi' and word.pos_orig != 'idiom' and (word.pos_orig in declensions or word.pos_orig in conjugations):
@@ -172,7 +205,7 @@ ${table_data_read}
 </div>
 % endif
 
-<div id="feedback_dps_ru_${word.pali_}" class="content_dps_ru hidden">
+<div id="feedback_dps_full_${word.pali_}" class="content_dps_full hidden">
 
     <p>
         Это образовательный проект и находится на стадии тестирования и редактирования.

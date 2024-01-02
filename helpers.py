@@ -155,19 +155,19 @@ def get_resource_paths_dps_full() -> ResourcePaths:
         output_stardict_zip_path=Path('ru-pali-dictionary-full.zip'),
         error_log_dir=Path('./errorlogs/'),
         # Project assets
-        dict_words_css_path=Path('./assets/words-dps-ru.css'),
+        dict_words_css_path=Path('./assets/words-dps-full.css'),
         dict_help_css_path=Path('./assets/help.css'),
         definition_css_path=Path('./assets/rpd.css'),
-        buttons_js_path=Path('./assets/buttons-dps-ru.js'),
+        buttons_js_path=Path('./assets/buttons-dps-full.js'),
         abbrev_path=Path('./assets/abbreviations.csv'),
         help_path=Path('./assets/help.csv'),
         # Project input
         abbreviation_template_path=Path('./assets/templates/abbreviation-dps-ru.html'),
         inflections_dir=dps_dir.joinpath('inflection/'),
         inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_dps/',
-        words_path=dps_dir.joinpath('../dpd-db/dps/csvs/dpd_dps_full.csv'),
+        words_path=dps_dir.joinpath('../dpd-db/dps/csvs/dps_full.csv'),
         icon_path=Path('./logo/book.bmp'),
-        word_template_path=Path('./assets/templates/word-dps-ru.html'),
+        word_template_path=Path('./assets/templates/word-dps-full.html'),
     )
 
     # ensure write dirs exist
