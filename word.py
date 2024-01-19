@@ -117,9 +117,10 @@ class DpsRuWord:
         self.pattern: str = df.loc[row, 'pattern']
         self.link: str = df.loc[row, 'link']
 
-        self.id: str = df.loc[row, 'id']
+        self.id: int = df.loc[row, 'id']
         self.sbs_category: str = df.loc[row, 'sbs_category']
-        self.sbs_class_anki: str = df.loc[row, 'sbs_class_anki']
+        self.sbs_class_anki: int = df.loc[row, 'sbs_class_anki']
+        self.sbs_class: int = df.loc[row, 'sbs_class']
 
         self.sbs_link_1: str = df.loc[row, 'sbs_link_1']
         self.sbs_link_2: str = df.loc[row, 'sbs_link_2']

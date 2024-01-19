@@ -76,7 +76,7 @@ ${button_template.format(target=f'feedback_dps_full_{word.pali_}', name='о сл
         % endif
 
         <tr valign="top">
-            <th>английский</th>
+            <th>english</th>
             <td>
                 % if word.meaning_1 != '':
                 <b>${word.meaning_1}</b>
@@ -121,7 +121,10 @@ ${button_template.format(target=f'feedback_dps_full_{word.pali_}', name='о сл
         <tr valign="top"><th>комментарий</th><td>${word.commentary}</td></tr>
         % endif
         % if word.notes != "":
-        <tr valign="top"><th>заметки</th><td>${word.notes}</td></tr>
+        <tr valign="top"><th>notes</th><td>${word.notes}</td></tr>
+        % endif
+        % if word.ru_notes != "":
+        <tr valign="top"><th>заметки</th><td>${word.ru_notes}</td></tr>
         % endif
         % if word.sanskrit != "":
         <tr valign="top"><th>санскрит</th><td><i>${word.sanskrit}</i></td></tr>

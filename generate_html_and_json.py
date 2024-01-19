@@ -204,11 +204,13 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
     with open(error_log_path, 'w', encoding=ENCODING) as error_log_file:
         error_log_file.write(error_log)
 
-    if inflection_table_error_string != '' and kind is Kind.DPSRU or kind is Kind.DPSFULL:
-        rich.print(f'{timeis()} [red]inflection table errors: {inflection_table_error_string}')
+    if kind is Kind.DPSRU or kind is Kind.DPSFULL:
 
-    if synonyms_error_string != '' and kind is Kind.DPSRU or kind is Kind.DPSFULL:
-        rich.print(f'{timeis()} [red]synonym errors: {synonyms_error_string}')
+        if inflection_table_error_string != '': 
+            rich.print(f'{timeis()} [red]inflection table errors: {inflection_table_error_string}')
+
+        if synonyms_error_string != '':
+            rich.print(f'{timeis()} [red]synonym errors: {synonyms_error_string}')
 
     # convert ṃ to ṁ
     text_data_full = re.sub('ṃ', 'ṁ', text_data_full)

@@ -26,23 +26,27 @@ ${result}
 <div class="content_sbs">
     <p>
         % if word.sbs_class_anki != '':
-        <a href="${word.class_link}"><b><i>(cl.${word.sbs_class_anki})</b></i></a> | 
+            <a href="${word.class_link}"><b><i>(cl.${word.sbs_class_anki})</b></i></a>
+            % if word.sbs_class:
+            <span class="gray"><i>${word.sbs_class}</i></span>
+            %endif
+            <span class="gray"> | </span>
         %endif
         % if word.sbs_category != '':
-        <a href="${word.sutta_link}"><b><i>(${word.sbs_category})</i></b></a> | 
+            <a href="${word.sutta_link}"><b><i>(${word.sbs_category})</i></b></a> | 
         %endif
         % if word.pos != '':
         ${word.pos}.
         % endif
         % if word.sbs_meaning != '':
-        <b>${word.sbs_meaning}</b>
+            <b>${word.sbs_meaning}</b>
         % elif word.meaning_1 == '' and word.meaning_2 != '':
-        <b>${word.meaning_2}${';' if word.sbs_meaning else ''} ${word.sbs_meaning}</b>
+            <b>${word.meaning_2}${';' if word.sbs_meaning else ''} ${word.sbs_meaning}</b>
         % else:
-        <b>${word.meaning_1}</b>
+            <b>${word.meaning_1}</b>
         % endif
         % if word.meaning_lit != '':
-        ; lit. ${word.meaning_lit}
+            ; lit. ${word.meaning_lit}
         % endif
     </p>
 </div>
