@@ -13,29 +13,29 @@ from generate_html_and_json import generate_html_and_json
 from helpers import ENCODING
 from helpers import ResourcePaths
 from helpers import copy_goldendict
-from helpers import get_resource_paths_dps_ru
+from helpers import get_resource_paths_ru
 from helpers import get_resource_paths_sbs
-from helpers import get_resource_paths_dps_full
+from helpers import get_resource_paths_dps
 from helpers import timeis, line  # TODO Use logging with the rich.logging.RichHandler for messages
 
 
 
 app = typer.Typer()
 
-RSC = get_resource_paths_dps_ru()
+RSC = get_resource_paths_ru()
 
 
 @app.command()
 def run_generate_html_and_json(generate_roots: bool = True):
-    rsc = get_resource_paths_dps_ru()
+    rsc = get_resource_paths_ru()
     generate_html_and_json(
         rsc=rsc,
         generate_roots=generate_roots)
 
 
 @app.command()
-def run_generate_html_and_json_dps_full(generate_roots: bool = True):
-    rsc = get_resource_paths_dps_full()
+def run_generate_html_and_json_dps(generate_roots: bool = True):
+    rsc = get_resource_paths_dps()
     generate_html_and_json(
         rsc=rsc,
         generate_roots=generate_roots)
@@ -91,7 +91,7 @@ def _run_generate_goldendict(rsc: ResourcePaths, ifo: 'StarDictIfo', move_to_des
 def run_generate_goldendict(move_to_dest: bool = True):
     from stardict_nu import ifo_from_opts, StarDictIfo
 
-    rsc = get_resource_paths_dps_ru()
+    rsc = get_resource_paths_ru()
 
     ifo = ifo_from_opts({
             "bookname": "Пали Словарь",
@@ -104,10 +104,10 @@ def run_generate_goldendict(move_to_dest: bool = True):
 
 
 @app.command()
-def run_generate_goldendict_dps_full(move_to_dest: bool = True):
+def run_generate_goldendict_dps(move_to_dest: bool = True):
     from stardict_nu import ifo_from_opts, StarDictIfo
 
-    rsc = get_resource_paths_dps_full()
+    rsc = get_resource_paths_dps()
 
     ifo = ifo_from_opts({
             "bookname": "DPS",

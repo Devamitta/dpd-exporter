@@ -25,17 +25,17 @@ p.heading b {
     font-weight: 700;
 }
 
-p.sutta_dps_full {
+p.sutta_ru {
     color: #358109;
     font-style: italic;
 }
 
-table.table1_dps_full {
+table.table1_ru {
     border: 1px solid transparent;
     border-collapse: collapse;
 }
 
-table.table1_dps_full td, table.table1_dps_full th {
+table.table1_ru td, table.table1_ru th {
     border: 1px solid transparent;
     border-collapse: collapse;
     line-height: 150%;
@@ -46,7 +46,7 @@ table.table1_dps_full td, table.table1_dps_full th {
     vertical-align: top;
 }
 
-table.table1_dps_full th {
+table.table1_ru th {
     color: #358109;
     font-weight: 700;
     white-space: nowrap;
@@ -83,7 +83,7 @@ input {
     display: none;
 }
 
-div.content_dps_full {
+div.content_ru {
     border: 2px solid #358109;
     border-radius: 5px;
     line-height: 150%;
@@ -91,7 +91,7 @@ div.content_dps_full {
     text-align: left;
 }
 
-a.button_dps_full {
+a.button_ru {
     text-decoration: none;
     background-color: #9ff16f;
     border-radius: 3px;
@@ -107,12 +107,12 @@ a.button_dps_full {
     user-select: none;
 }
 
-a.button_dps_full.close {
+a.button_ru.close {
     float: right;
     margin: 10px;
 }
 
-a.button_dps_full:hover {
+a.button_ru:hover {
     background-color: #358109;
     color: white;
     user-select: none;
@@ -128,7 +128,7 @@ a.button_dps_full:hover {
     display: none;
 }
 
-a.button_dps_full.active {
+a.button_ru.active {
     background-color: #358109;
     color: white;
     user-select: none;

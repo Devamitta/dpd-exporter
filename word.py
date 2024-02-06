@@ -10,7 +10,7 @@ from pandas.core.frame import Series
 from helpers import Kind
 from helpers import ENCODING
 from helpers import ResourcePaths
-from helpers import get_resource_paths_dps_ru
+from helpers import get_resource_paths_ru
 
 import sys
 sys.path.append("/home/deva/Documents/dpd-db") # https://github.com/digitalpalidictionary/dpd-db
@@ -26,7 +26,7 @@ class DpsRuWord:
 
     def __init__(self, df: DataFrame, row: int):
         if DpsRuWord.abbreviations_ru is None:
-            DpsRuWord.abbreviations_ru = _load_abbrebiations_ru(rsc=get_resource_paths_dps_ru())  # TODO Pass rsc
+            DpsRuWord.abbreviations_ru = _load_abbrebiations_ru(rsc=get_resource_paths_ru())  # TODO Pass rsc
 
         self.pali: str = df.loc[row, 'pali_1']
         self.pali_: str = '_' + re.sub(' ', '_', self.pali)
@@ -171,7 +171,7 @@ class AbbreviationEntry:
         self.ru_abbrev = series.iloc[6]
         ru_abbrev = series.iloc[6]
 
-        if kind == Kind.DPSRU or kind == Kind.DPSFULL:
+        if kind == Kind.RU or kind == Kind.DPS:
             if ru_abbrev:
                 self.abbrev = ru_abbrev
 

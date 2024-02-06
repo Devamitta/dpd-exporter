@@ -7,7 +7,7 @@
 <a class="link" target="_blank" href="${href}"/>${text}</a>\
 </%def>
 
-<%def name='google_link_dps_ru(entry, text, args=[])'>\
+<%def name='google_link_ru(entry, text, args=[])'>\
 ${_google_link('https://docs.google.com/forms/d/1iMD9sCSWFfJAFCFYuG9HRIyrr9KFRy0nAOVApM998wM/viewform', entry, text, args)}\
 </%def>
 

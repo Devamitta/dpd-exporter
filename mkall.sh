@@ -12,6 +12,8 @@
 
 cp "/home/deva/Documents/dpd-db/dps/csvs/dps_full.csv" "/home/deva/Documents/dps/spreadsheets/dps_full.csv"
 
+cp "/home/deva/Documents/dpd-db/inflections/inflection_templates.xlsx" "/home/deva/Documents/dps/inflection/declensions & conjugations.xlsx"
+
 poetry run python sbs_pd_filter.py
 
 cd "../inflection"
@@ -28,10 +30,13 @@ poetry run python "inflection generator.py"
 
 cd "../exporter"
 
+# ru
 poetry run python exporter.py run-generate-html-and-json
 poetry run python exporter.py run-generate-goldendict
-poetry run python exporter.py run-generate-html-and-json-dps-full
-poetry run python exporter.py run-generate-goldendict-dps-full
+# dps
+poetry run python exporter.py run-generate-html-and-json-dps
+poetry run python exporter.py run-generate-goldendict-dps
+# sbs
 poetry run python exporter.py run-generate-html-and-json-sbs
 poetry run python exporter.py run-generate-goldendict-sbs
 

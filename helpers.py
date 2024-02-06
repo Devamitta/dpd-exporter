@@ -40,8 +40,8 @@ class Kind(enum.Enum):
     """ Marks type of building dict
     """
     SBS = enum.auto()
-    DPSRU = enum.auto()
-    DPSFULL = enum.auto()
+    RU = enum.auto()
+    DPS = enum.auto()
 
 
 class DataFrames(TypedDict):
@@ -92,7 +92,7 @@ def parse_data_frames(rsc: ResourcePaths) -> DataFrames:
     )
 
 
-def get_resource_paths_dps_ru() -> ResourcePaths:
+def get_resource_paths_ru() -> ResourcePaths:
     s = os.getenv('DPS_DIR')
     if s is None:
         rich.print(f"{timeis()} [red]ERROR! DPS_DIR is not set.")
@@ -101,7 +101,7 @@ def get_resource_paths_dps_ru() -> ResourcePaths:
         dps_dir = Path(s)
 
     rsc = ResourcePaths(
-        kind=Kind.DPSRU,
+        kind=Kind.RU,
         # Project output
         output_dir=Path('./output/'),
         output_html_dir=Path('./output/html/'),
@@ -111,19 +111,19 @@ def get_resource_paths_dps_ru() -> ResourcePaths:
         output_stardict_zip_path=Path('ru-pali-dictionary.zip'),
         error_log_dir=Path('./errorlogs/'),
         # Project assets
-        dict_words_css_path=Path('./assets/words-dps-ru.css'),
+        dict_words_css_path=Path('./assets/words-ru.css'),
         dict_help_css_path=Path('./assets/help.css'),
         definition_css_path=Path('./assets/rpd.css'),
-        buttons_js_path=Path('./assets/buttons-dps-ru.js'),
+        buttons_js_path=Path('./assets/buttons-ru.js'),
         abbrev_path=Path('./assets/abbreviations.csv'),
         help_path=Path('./assets/help.csv'),
         # Project input
-        abbreviation_template_path=Path('./assets/templates/abbreviation-dps-ru.html'),
+        abbreviation_template_path=Path('./assets/templates/abbreviation-ru.html'),
         inflections_dir=dps_dir.joinpath('inflection/'),
         inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_dps/',
         words_path=dps_dir.joinpath('../dpd-db/dps/csvs/dps_full.csv'),
         icon_path=Path('./logo/book.bmp'),
-        word_template_path=Path('./assets/templates/word-dps-ru.html'),
+        word_template_path=Path('./assets/templates/word-ru.html'),
     )
 
     # ensure write dirs exist
@@ -136,7 +136,7 @@ def get_resource_paths_dps_ru() -> ResourcePaths:
     return rsc
 
 
-def get_resource_paths_dps_full() -> ResourcePaths:
+def get_resource_paths_dps() -> ResourcePaths:
     s = os.getenv('DPS_DIR')
     if s is None:
         rich.print(f"{timeis()} [red]ERROR! DPS_DIR is not set.")
@@ -145,29 +145,29 @@ def get_resource_paths_dps_full() -> ResourcePaths:
         dps_dir = Path(s)
 
     rsc = ResourcePaths(
-        kind=Kind.DPSFULL,
+        kind=Kind.DPS,
         # Project output
         output_dir=Path('./output/'),
         output_html_dir=Path('./output/html/'),
         output_help_html_dir=Path('./output/help html/'),
         output_share_dir=Path('./share/'),
         gd_json_path=Path('./output/gd.json'),
-        output_stardict_zip_path=Path('ru-pali-dictionary-full.zip'),
+        output_stardict_zip_path=Path('dps.zip'),
         error_log_dir=Path('./errorlogs/'),
         # Project assets
-        dict_words_css_path=Path('./assets/words-dps-full.css'),
+        dict_words_css_path=Path('./assets/words-dps.css'),
         dict_help_css_path=Path('./assets/help.css'),
         definition_css_path=Path('./assets/rpd.css'),
-        buttons_js_path=Path('./assets/buttons-dps-full.js'),
+        buttons_js_path=Path('./assets/buttons-dps.js'),
         abbrev_path=Path('./assets/abbreviations.csv'),
         help_path=Path('./assets/help.csv'),
         # Project input
-        abbreviation_template_path=Path('./assets/templates/abbreviation-dps-ru.html'),
+        abbreviation_template_path=Path('./assets/templates/abbreviation-ru.html'),
         inflections_dir=dps_dir.joinpath('inflection/'),
         inflections_html_tables_dir=dps_dir/'inflection/output/html_tables_dps/',
         words_path=dps_dir.joinpath('../dpd-db/dps/csvs/dps_full.csv'),
         icon_path=Path('./logo/book.bmp'),
-        word_template_path=Path('./assets/templates/word-dps-full.html'),
+        word_template_path=Path('./assets/templates/word-dps.html'),
     )
 
     # ensure write dirs exist

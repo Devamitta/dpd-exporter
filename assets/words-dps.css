@@ -25,17 +25,17 @@ p.heading b {
     font-weight: 700;
 }
 
-p.sutta_dps_ru {
+p.sutta_dps {
     color: #358109;
     font-style: italic;
 }
 
-table.table1_dps_ru {
+table.table1_dps {
     border: 1px solid transparent;
     border-collapse: collapse;
 }
 
-table.table1_dps_ru td, table.table1_dps_ru th {
+table.table1_dps td, table.table1_dps th {
     border: 1px solid transparent;
     border-collapse: collapse;
     line-height: 150%;
@@ -46,7 +46,7 @@ table.table1_dps_ru td, table.table1_dps_ru th {
     vertical-align: top;
 }
 
-table.table1_dps_ru th {
+table.table1_dps th {
     color: #358109;
     font-weight: 700;
     white-space: nowrap;
@@ -83,7 +83,7 @@ input {
     display: none;
 }
 
-div.content_dps_ru {
+div.content_dps {
     border: 2px solid #358109;
     border-radius: 5px;
     line-height: 150%;
@@ -91,7 +91,7 @@ div.content_dps_ru {
     text-align: left;
 }
 
-a.button_dps_ru {
+a.button_dps {
     text-decoration: none;
     background-color: #9ff16f;
     border-radius: 3px;
@@ -107,12 +107,12 @@ a.button_dps_ru {
     user-select: none;
 }
 
-a.button_dps_ru.close {
+a.button_dps.close {
     float: right;
     margin: 10px;
 }
 
-a.button_dps_ru:hover {
+a.button_dps:hover {
     background-color: #358109;
     color: white;
     user-select: none;
@@ -128,7 +128,7 @@ a.button_dps_ru:hover {
     display: none;
 }
 
-a.button_dps_ru.active {
+a.button_dps.active {
     background-color: #358109;
     color: white;
     user-select: none;

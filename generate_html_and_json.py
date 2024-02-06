@@ -23,7 +23,7 @@ from word import DpsRuWord
 
 
 # TODO Merge with sbs version (use a dict for lang-specific entries)
-def _full_text_dps_ru_entry(word: DpsRuWord) -> str:
+def _full_text_ru_entry(word: DpsRuWord) -> str:
     comm_text = re.sub('<br/>', ' ', word.commentary)
     comm_text = re.sub('<b>', '', comm_text)
     comm_text = re.sub('</b>', '', comm_text)
@@ -125,15 +125,15 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
     for row in range(df_length):
         word = DpsRuWord(df, row)
 
-        if rsc['kind'] is Kind.DPSRU or rsc['kind'] is Kind.DPSFULL:
+        if rsc['kind'] is Kind.RU or rsc['kind'] is Kind.DPS:
             word.translate_abbreviations()
 
         if row % 5000 == 0 or row % df_length == 0:
             rich.print(f'{timeis()} {row}/{df_length}\t{word.pali}')
 
         html_string = ''
-        if kind is Kind.DPSRU or kind is Kind.DPSFULL:
-            text_full = _full_text_dps_ru_entry(word=word)
+        if kind is Kind.RU or kind is Kind.DPS:
+            text_full = _full_text_ru_entry(word=word)
         elif kind is Kind.SBS:
             text_full = _full_text_sbs_entry(word=word)
 
@@ -143,7 +143,7 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
         html_string += header_template.render(css=words_css, js=buttons_js)
 
         # summary
-        if kind is Kind.DPSRU or kind is Kind.DPSFULL:
+        if kind is Kind.RU or kind is Kind.DPS:
             if word.ru_meaning == '':
                 text_concise += f'{word.pali}. {word.pos}. {word.meaning_1}.'
             else:
@@ -204,7 +204,7 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
     with open(error_log_path, 'w', encoding=ENCODING) as error_log_file:
         error_log_file.write(error_log)
 
-    if kind is Kind.DPSRU or kind is Kind.DPSFULL:
+    if kind is Kind.RU or kind is Kind.DPS:
 
         if inflection_table_error_string != '': 
             rich.print(f'{timeis()} [red]inflection table errors: {inflection_table_error_string}')
@@ -217,11 +217,11 @@ def generate_html_and_json(rsc, generate_roots: bool = True):
     text_data_concise = re.sub('ṃ', 'ṁ', text_data_concise)
 
     # write text versions
-    p = rsc['output_share_dir'].joinpath('dps_ru_full.txt')
+    p = rsc['output_share_dir'].joinpath('ru_full.txt')
     with open(p, 'w', encoding=ENCODING) as f:
         f.write(text_data_full)
 
-    p = rsc['output_share_dir'].joinpath('dps_ru_concise.txt')
+    p = rsc['output_share_dir'].joinpath('ru_concise.txt')
     with open(p, 'w', encoding=ENCODING) as f:
         f.write(text_data_concise)
 
@@ -251,7 +251,10 @@ def generate_roots_html_and_json(data: DataFrames, rsc: ResourcePaths, html_data
 
     definition_data_df = pd.DataFrame(definition_data_list)
     definition_data_df.columns = ["word", "definition_html", "definition_plain", "synonyms"]
-    pali_data_df = pd.concat([pali_data_df, abbrev_data_df, help_data_df, definition_data_df])
+    if rsc['kind'] is Kind.DPS:
+        pali_data_df = pd.concat([abbrev_data_df, help_data_df, definition_data_df])
+    else:
+        pali_data_df = pd.concat([pali_data_df, abbrev_data_df, help_data_df, definition_data_df])
 
     rich.print(f'{timeis()} [green]saving html to json')
 
@@ -321,7 +324,7 @@ def _generate_help_html(data: DataFrames, rsc: ResourcePaths) -> List[List[str]]
         html_string += "<body>"
 
         # summary
-        if rsc['kind'] is Kind.DPSRU or rsc['kind'] is Kind.DPSFULL:
+        if rsc['kind'] is Kind.RU or rsc['kind'] is Kind.DPS:
             html_string += f'<div class="help"><p>помощь. <b>{help_title}</b>. {meaning}</p></div>'
         else:
             html_string += f'<div class="help"><p>help. <b>{help_title}</b>. {meaning}</p></div>'
@@ -351,11 +354,11 @@ def _generate_definition_html(data: DataFrames, rsc: ResourcePaths) -> List[List
     for row in range(df_length):
         word = DpsRuWord(df, row)
 
-        if rsc['kind'] is Kind.DPSRU or rsc['kind'] is Kind.DPSFULL:
+        if rsc['kind'] is Kind.RU or rsc['kind'] is Kind.DPS:
             word.translate_abbreviations()
 
         meanings_list = []
-        meaning_data = word.ru_meaning if kind is Kind.DPSRU or kind is Kind.DPSFULL else (word.meaning_1 if word.meaning_1 else word.meaning_2)
+        meaning_data = word.ru_meaning if kind is Kind.RU or kind is Kind.DPS else (word.meaning_1 if word.meaning_1 else word.meaning_2)
 
         meaning_data = re.sub(r'\?\?', '', meaning_data)
 
@@ -369,7 +372,7 @@ def _generate_definition_html(data: DataFrames, rsc: ResourcePaths) -> List[List
             meanings_clean = re.sub(r'(^ | $)', '', meanings_clean)             # remove space at start and fin
             meanings_clean = re.sub(r'  ', ' ', meanings_clean)                 # remove double spaces
             meanings_clean = re.sub(r' ;|; ', ';', meanings_clean)              # remove space around semicolons
-            meanings_clean = re.sub(r'\((комм|comm)\).+$', '', meanings_clean)  # remove commentary meanings
+            # meanings_clean = re.sub(r'\((комм|comm)\).+$', '', meanings_clean)  # remove commentary meanings
             meanings_clean = re.sub(r'(досл|lit).+$', '', meanings_clean)       # remove lit meanings
             meanings_list = meanings_clean.split(';')
 
@@ -390,7 +393,7 @@ def _generate_definition_html(data: DataFrames, rsc: ResourcePaths) -> List[List
 
     definition_data_list = []
 
-    div_class = 'rpd' if kind is Kind.DPSRU or kind is Kind.DPSFULL else 'epd_sbs'
+    div_class = 'rpd' if kind is Kind.RU or kind is Kind.DPS else 'epd_sbs'
     for key, value in definition.items():
         html_string = ''
         html_string = definition_css
