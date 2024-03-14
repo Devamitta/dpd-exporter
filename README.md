@@ -1,5 +1,9 @@
 # dps-exporter
 
+This is an old version; the new version has been integrated into the DPD exporter:
+
+https://github.com/digitalpalidictionary/dpd-db/tree/main/exporter
+
 ## Description
 
 Exporting dps into various formats
